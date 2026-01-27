@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow">
+    <title>Site Maintenance | BTechBook.in</title>
+    
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* =======================
+           Maintenance Page Styles
+           ======================= */
+        :root {
+            --primary: #0284c7;
+            --dark: #0f172a;
+            --gray: #64748b;
+            --bg: #f8fafc;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--bg);
+            color: var(--dark);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .container {
+            padding: 2rem;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        /* --- Branding (Reused from your main site) --- */
+        .brand-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: inherit;
+            margin-bottom: 2rem;
+        }
+
+        .brand-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(2, 132, 199, 0.22);
+        }
+
+        .brand-text {
+            font-weight: 800;
+            font-size: 1.8rem;
+            color: var(--dark);
+            letter-spacing: -0.5px;
+        }
+        .brand-highlight { color: var(--primary); }
+
+        /* --- Main Visual --- */
+        .maintenance-visual {
+            font-size: 5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* --- Text Content --- */
+        h1 {
+            font-size: 2rem;
+            margin: 0 0 1rem 0;
+            color: var(--dark);
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: var(--gray);
+            margin-bottom: 2rem;
+        }
+
+        /* --- Loader Animation --- */
+        .loader {
+            width: 48px;
+            height: 48px;
+            border: 5px solid #e2e8f0;
+            border-bottom-color: var(--primary);
+            border-radius: 50%;
+            display: inline-block;
+            box-sizing: border-box;
+            animation: rotation 1s linear infinite;
+            margin-bottom: 2rem;
+        }
+
+        /* --- Contact / Social --- */
+        .contact-info {
+            font-size: 0.9rem;
+            color: var(--gray);
+            border-top: 1px solid #e2e8f0;
+            padding-top: 1.5rem;
+            width: 100%;
+        }
+        
+        .contact-info a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* --- Animations --- */
+        @keyframes rotation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); opacity: 0.8; }
+            50% { transform: translateY(-10px); opacity: 1; }
+            100% { transform: translateY(0px); opacity: 0.8; }
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 480px) {
+            .brand-text { font-size: 1.4rem; }
+            h1 { font-size: 1.5rem; }
+            .maintenance-visual { font-size: 4rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="brand-logo">
+            <div class="brand-icon">
+                <i class="fas fa-book-open"></i>
+            </div>
+            <span class="brand-text">BTechBook<span class="brand-highlight">.in</span></span>
+        </div>
+
+        <div class="maintenance-visual">
+            <i class="fas fa-screwdriver-wrench"></i>
+        </div>
+
+        <h1>We are currently upgrading</h1>
+
+        <p>
+            BTechBook is currently down for scheduled maintenance. 
+            We are uploading new lecture notes and improving the website performance.
+            <br><br>
+            <strong>We should be back shortly!</strong>
+        </p>
+
+        <span class="loader"></span>
+
+        <div class="contact-info">
+            Need something urgent? <br>
+            Contact us at <a href="mailto:support@btechbook.in">support@btechbook.in</a>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Engineering Books - Tech Note_Books Hub</title>
+
+    <!-- Font Awesome for modern, sleek icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" 
+          xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLMDJ6dK6tF7o+7M3UfF+8bW9vKz9zIqX9O20T0d+8tE1rG5S7h12N8D3Bv/1vW/B=" 
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Google Fonts: Poppins (Sans-serif) for body and Playfair Display (Serif) for headlines -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* =================================
+            Color Variables (Dark & Light Mode)
+        ==================================== */
+        
+        :root {
+            /* Dark Mode Defaults */
+            --background-color: #1a1a2e; /* Deep Indigo */
+            --surface-color: #252440; /* Slightly lighter surface */
+            --text-color: #f0f0f5;
+            --text-secondary: #a0a0b0;
+            --border-color: #3e3e5c;
+            --shadow-color: rgba(0, 0, 0, 0.4);
+            --primary-color: #0d6efd; /* Accent Blue */
+        
+            /* Accent Colors (for cards) */
+            --card-accent-1: #0d6efd; /* Blue */
+            --card-accent-2: #28a745; /* Green */
+            --card-accent-3: #ffc107; /* Yellow */
+            --card-accent-4: #dc3545; /* Red */
+            --card-accent-5: #6f42c1; /* Purple */
+            --card-accent-6: #17a2b8; /* Cyan */
+            --card-accent-7: #fd7e14; /* Orange */
+        }
+        
+        /* Light Mode Override */
+        body[data-theme="light"] {
+            --background-color: #f8f9fa;
+            --surface-color: #ffffff;
+            --text-color: #212529;
+            --text-secondary: #6c757d;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --primary-color: #0d6efd;
+            
+            /* Yellow card needs dark text in light mode for readability */
+            --card-text-light-3: #212529; 
+        }
+        
+        
+        /* =================================
+            Base Styles
+        ==================================== */
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            /* Smooth transition for theme change */
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        .page-title {
+            text-align: center;
+            font-size: 3rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .page-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-top: 0;
+            margin-bottom: 50px;
+            font-weight: 300;
+        }
+        
+        
+        /* =================================
+            Header & Navigation
+        ==================================== */
+        
+        header {
+            background-color: var(--surface-color);
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header h1 a {
+            color: var(--text-color);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            transition: color 0.3s;
+        }
+        
+        header h1 a:hover {
+            color: var(--primary-color);
+        }
+        
+        .logo-accent {
+            color: var(--primary-color);
+        }
+        
+        header nav ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 0;
+            padding: 0;
+        }
+        
+        header nav a {
+            padding: 8px 16px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            color: var(--text-color);
+        }
+        
+        header nav a:hover:not(.active) {
+            color: var(--primary-color);
+        }
+        
+        /* Active Link Styling */
+        header nav a.active {
+            background-color: var(--primary-color) !important;
+            color: var(--surface-color) !important;
+            box-shadow: 0 4px 8px rgba(13, 110, 253, 0.3);
+        }
+        
+        
+        /* Theme Toggle Button */
+        #theme-toggle {
+            background: transparent;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            transition: all 0.2s;
+        }
+        
+        #theme-toggle:hover {
+            color: var(--primary-color);
+            background-color: var(--border-color);
+        }
+        
+        
+        /* =================================
+            Search Bar
+        ==================================== */
+        
+        .search-container {
+            position: relative;
+            margin: 0 auto 50px auto;
+            max-width: 600px;
+            width: 90%;
+        }
+        #searchInput {
+            width: 100%;
+            padding: 15px 20px 15px 55px;
+            font-size: 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 12px; /* Smoother, larger radius */
+            background-color: var(--surface-color);
+            color: var(--text-color);
+            box-shadow: 0 4px 10px var(--shadow-color);
+            transition: border-color 0.3s, box-shadow 0.3s, background-color 0.3s, color 0.3s;
+        }
+        #searchInput::placeholder {
+            color: var(--text-secondary);
+        }
+        #searchInput:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(13, 110, 253, 0.2);
+        }
+        .search-icon {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+        
+        
+        /* =================================
+            Subject Cards UI (Modern Grid)
+        ==================================== */
+        
+        #booksGrid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            padding: 0;
+            /* Animation for smooth appearance on load */
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInSlideUp 0.6s ease-out forwards;
+        }
+        
+        .subject-item-container {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .subject-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 25px;
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 15px; /* Modern, larger radius */
+            text-decoration: none;
+            color: var(--text-color);
+            width: 100%; /* Take full width of container */
+            max-width: 250px;
+            min-height: 180px;
+            box-shadow: 0 6px 20px var(--shadow-color);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease-in-out, background-color 0.3s, border-color 0.3s;
+        }
+        
+        /* Colored accent line at the top of the card */
+        .subject-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px; 
+            background-color: currentColor; /* Uses the accent color set on the card */
+            transition: height 0.3s ease-in-out;
+        }
+        
+        .subject-card:hover {
+            transform: translateY(-5px); /* Lift up slightly */
+            box-shadow: 0 15px 30px var(--shadow-color);
+            border-color: currentColor; /* Border glows with accent color */
+        }
+        
+        /* Subtle colored background hint on hover */
+        .subject-card:hover::before {
+            height: 100%; 
+            opacity: 0.05;
+        }
+        
+        /* Icon Wrapper (The Circle) */
+        .subject-icon-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* INCREASED SIZE: From 75px to 85px for desktop */
+            width: 85px; 
+            height: 85px;
+            border-radius: 50%; /* Perfect circle */
+            margin-bottom: 20px;
+            background-color: currentColor; /* Fills with card's accent color */
+            color: currentColor; /* Icon uses the accent color */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            position: relative;
+            transition: transform 0.4s ease-in-out, color 0.3s;
+        }
+
+        /* Inner circle layer to make the icon stand out */
+        .subject-icon-wrapper::after {
+            content: '';
+            position: absolute;
+            width: 85%; /* Inner circle size */
+            height: 85%;
+            border-radius: 50%;
+            background-color: var(--surface-color); /* Uses the main surface color for contrast */
+            z-index: -1; 
+            transform: translate(-50%, -50%);
+            top: 50%;
+            left: 50%;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .subject-card:hover .subject-icon-wrapper {
+            transform: scale(1.1); /* Slight pulse on hover */
+        }
+        
+        /* The Icon */
+        .subject-icon {
+            /* INCREASED SIZE: From 2.8rem to 3.2rem for desktop */
+            font-size: 3.2rem;
+            transition: transform 0.4s ease-in-out;
+        }
+        .subject-card:hover .subject-icon {
+            transform: rotate(360deg);
+        }
+        
+        
+        /* Subject Name */
+        .subject-name {
+            font-size: 1.15rem;
+            font-weight: 600;
+            text-align: center;
+            margin: 5px 0 15px 0;
+            color: var(--text-color);
+            line-height: 1.4;
+            z-index: 1;
+            transition: color 0.3s;
+        }
+        
+        /* New UI Feature: Card Tag */
+        .card-tag {
+            background-color: var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 5px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-top: auto; /* Pushes the tag to the bottom */
+            z-index: 1;
+            transition: all 0.3s;
+        }
+        .subject-card:hover .card-tag {
+            background-color: var(--primary-color);
+            color: var(--surface-color);
+        }
+        
+        
+        /* --- Accent Color Palette (Using CSS Variable 'currentColor' for magic) --- */
+        .color-accent-1 { color: var(--card-accent-1); }
+        .color-accent-2 { color: var(--card-accent-2); }
+        .color-accent-3 { color: var(--card-accent-3); }
+        .color-accent-4 { color: var(--card-accent-4); }
+        .color-accent-5 { color: var(--card-accent-5); }
+        .color-accent-6 { color: var(--card-accent-6); }
+        .color-accent-7 { color: var(--card-accent-7); }
+        
+        /* Special Handling for Yellow Card (Color-accent-3) in Light Mode */
+        body[data-theme="light"] .color-accent-3 { 
+            color: var(--card-accent-3); 
+        }
+        body[data-theme="light"] .color-accent-3 .subject-name {
+            /* Makes the title dark for contrast against the light background */
+            color: var(--card-text-light-3);
+        }
+        
+        /* =================================
+            No Results Message
+        ==================================== */
+        
+        .no-results-message {
+            text-align: center;
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            padding: 60px 20px;
+            grid-column: 1 / -1;
+            border: 2px dashed var(--border-color);
+            border-radius: 12px;
+            background-color: var(--surface-color);
+            margin-top: 30px;
+            font-style: italic;
+        }
+        .no-results-message i {
+            margin-right: 10px;
+            color: var(--card-accent-4);
+        }
+        
+        
+        /* =================================
+            Footer
+        ==================================== */
+        
+        footer {
+            background-color: var(--surface-color);
+            color: var(--text-secondary);
+            text-align: center;
+            padding: 20px 0;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9rem;
+            margin-top: 50px;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        
+        
+        /* =================================
+            Animations & Responsiveness
+        ==================================== */
+        
+        /* Initial card loading animation */
+        @keyframes fadeInSlideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2.2rem;
+            }
+            .page-subtitle {
+                font-size: 1rem;
+            }
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            header nav ul {
+                width: 100%;
+                justify-content: center;
+            }
+            header h1 a {
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            #booksGrid {
+                /* On very small screens, make the grid a single column */
+                grid-template-columns: 1fr;
+                padding: 0 10px;
+            }
+            .subject-card {
+                max-width: 100%;
+                width: auto;
+                min-height: 160px;
+                padding: 20px;
+            }
+            
+            /* ADJUSTED SIZE FOR MOBILE */
+            .subject-icon-wrapper {
+                width: 70px;
+                height: 70px;
+            }
+            .subject-icon {
+                font-size: 2.6rem;
+            }
+        }
+    </style>
+</head>
+<body data-theme="dark">
+
+    <header>
+        <div class="header-container">
+            <h1><a href="index.html">Tech Note<span class="logo-accent">_Books Hub</span></a></h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Notes</a></li>
+                    <li><a class="active" href="books.html">Books</a></li>
+                    <!-- Theme Toggle Button -->
+                    <li><button id="theme-toggle" aria-label="Toggle dark/light theme"><i class="fas fa-moon"></i></button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h2 class="page-title">Engineering Books Library 📚</h2>
+            <p class="page-subtitle">Curated collection for your engineering studies. Search, find, and learn.</p>
+
+            <div class="search-container">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" id="searchInput" placeholder="Search for 'Thermodynamics', 'Mechanics', or 'C Programming'...">
+            </div>
+            
+            <!-- Book Grid (Subject Cards) -->
+            <div id="booksGrid" class="animated-scroll">
+                
+                <!-- Card 1: Engineering Mathematics -->
+                <div class="subject-item-container">
+                    <a href="https://drive.google.com/drive/folders/1UzbzGJwmd3TrkYEtEi8ShuXh-cRoy9Av?usp=drive_link" class="subject-card color-accent-1">
+                        <div class="subject-icon-wrapper">
+                            <i class="fas fa-calculator subject-icon"></i>
+                        </div>
+                        <h3 class="subject-name">Engineering Mathematics</h3>
+                        <p class="card-tag">Core</p>
+                    </a>
+                </div>
+                
+                <!-- Card 2: Theory of Machines -->
+                <div class="subject-item-container">
+                    <a href="https://drive.google.com/drive/folders/1im3Xg232eKhZbcW5Q82XHmadHzZBXHh0?usp=sharing" class="subject-card color-accent-2">
+                        <div class="subject-icon-wrapper">
+                            <i class="fas fa-atom subject-icon"></i>
+                        </div>
+                        <h3 class="subject-name">Theory of Machines</h3>
+                        <p class="card-tag">Mechanical</p>
+                    </a>
+                </div>
+                
+                <!-- Card 3: Engineering Chemistry -->
+                <div class="subject-item-container">
+                    <a href="https://drive.google.com/file/d/1YQOTT6QABAxkjNMyL6OD4fZVr6iI8Xo_/view?usp=drive_link" class="subject-card color-accent-3">
+                        <div class="subject-icon-wrapper">
+                            <i class="fas fa-flask subject-icon"></i>
+                        </div>
+                        <h3 class="subject-name">Engineering Chemistry</h3>
+                        <p class="card-tag">General</p>
+                    </a>
+                </div>
+                
+                <!-- Card 4: Engineering Mechanics -->
+                <div class="subject-item-container">
+                    <a href="https://drive.google.com/drive/folders/1YK6tSgdgN59ud5dme9bGHTxmJsF98Sx1?usp=drive_link" class="subject-card color-accent-4">
+                        <div class="subject-icon-wrapper">
+                            <i class="fas fa-cogs subject-icon"></i>
+                        </div>
+                        <h3 class="subject-name">Engineering Mechanics</h3>
+                        <p class="card-tag">Core</p>
+                    </a>
+                </div>
+
+                <!-- Card 5: Thermodynamics -->
+                <div class="subject-item-container">
+                    <a href="https://drive.google.com/file/d/1ZlMhx1TJo0IrEp8anyTq_ZTLFfGniqLw/view?usp=sharing" class="subject-card color-accent-5">
+                        <div class="subject-icon-wrapper">
+                            <i class="fas fa-fire subject-icon"></i>
+                        </div>
+                        <h3 class="subject-name">Thermodynamics</h3>
+                        <p class="card-tag">Mechanical</p>
+                    </a>
+                </div>
+
+                <!-- Card 6: Fluid Mechanics -->
+                <div class="subject-item-container">
+                    <a href="https://drive.google.com/file/d/1val7FRtN95b8CVuSBQZWhWh6kyoPI6e9/view?usp=drive_link" class="subject-card color-accent-6">
+                        <div class="subject-icon-wrapper">
+                            <i class="fas fa-water subject-icon"></i>
+                        </div>
+                        <h3 class="subject-name">Fluid Mechanics</h3>
+                        <p class="card-tag">Mechanical</p>
+                    </a>
+                </div>
+
+                <!-- Card 7: Strength of Materials -->
+                <div class="subject-item-container">
+                    <a href="https://drive.google.com/file/d/1PYQyZGvWifKc5g2nhrfzZ1LSRYa7Otoa/view?usp=drive_link" class="subject-card color-accent-7">
+                        <div class="subject-icon-wrapper">
+                            <i class="fas fa-balance-scale-right subject-icon"></i>
+                        </div>
+                        <h3 class="subject-name">Strength of Materials</h3>
+                        <p class="card-tag">Civil/Mech</p>
+                    </a>
+                </div>
+
+                <!-- Card 8: Design of Machine Element -->
+                <div class="subject-item-container">
+                    <a href="https://drive.google.com/file/d/1p73mKRwnqr8F2VkUJL5vNlb9GvV9I2fe/view?usp=drive_link" class="subject-card color-accent-1">
+                        <div class="subject-icon-wrapper">
+                            <i class="fas fa-drafting-compass subject-icon"></i>
+                        </div>
+                        <h3 class="subject-name">Design of Machine Element</h3>
+                        <p class="card-tag">Mechanical</p>
+                    </a>
+                </div>
+
+                <!-- Card 9: Heat and Mass Transfer -->
+                <div class="subject-item-container">
+                    <a href="https://drive.google.com/file/d/1xbCdOgcZhAVWEQVCYr_ZoFYVUiJ6r-zu/view?usp=drive_link" class="subject-card color-accent-2">
+                        <div class="subject-icon-wrapper">
+                            <i class="fas fa-industry subject-icon"></i>
+                        </div>
+                        <h3 class="subject-name">Heat and Mass Transfer</h3>
+                        <p class="card-tag">Mechanical</p>
+                    </a>
+                </div>
+
+                <!-- Card 10: Production Technology -->
+                <div class="subject-item-container">
+                    <a href="https://otieu.com/4/9698330" class="subject-card color-accent-3">
+                        <div class="subject-icon-wrapper">
+                            <i class="fas fa-tools subject-icon"></i>
+                        </div>
+                        <h3 class="subject-name">Production Technology</h3>
+                        <p class="card-tag">Mechanical</p>
+                    </a>
+                </div>
+                
+                <!-- Card 11: Electrical Engineering -->
+                <div class="subject-item-container">
+                    <a href="https://otieu.com/4/9698330" class="subject-card color-accent-4">
+                        <div class="subject-icon-wrapper">
+                            <i class="fas fa-bolt subject-icon"></i>
+                        </div>
+                        <h3 class="subject-name">Electrical Engineering</h3>
+                        <p class="card-tag">Electrical</p>
+                    </a>
+                </div>
+                
+                <!-- Card 12: Electronics Engineering -->
+                <div class="subject-item-container">
+                    <a href="https://otieu.com/4/9698330" class="subject-card color-accent-5">
+                        <div class="subject-icon-wrapper">
+                            <i class="fas fa-microchip subject-icon"></i>
+                        </div>
+                        <h3 class="subject-name">Electronics Engineering</h3>
+                        <p class="card-tag">Electronics</p>
+                    </a>
+                </div>
+                
+                <!-- Card 13: Control Systems -->
+                <div class="subject-item-container">
+                    <a href="https://otieu.com/4/9698330" class="subject-card color-accent-6">
+                        <div class="subject-icon-wrapper">
+                            <i class="fas fa-sliders-h subject-icon"></i>
+                        </div>
+                        <h3 class="subject-name">Control Systems</h3>
+                        <p class="card-tag">E&I</p>
+                    </a>
+                </div>
+                
+                <!-- Card 14: Engineering Drawing -->
+                <div class="subject-item-container">
+                    <a href="https://otieu.com/4/9698330" class="subject-card color-accent-7">
+                        <div class="subject-icon-wrapper">
+                            <i class="fas fa-pencil-ruler subject-icon"></i>
+                        </div>
+                        <h3 class="subject-name">Engineering Drawing</h3>
+                        <p class="card-tag">General</p>
+                    </a>
+                </div>
+                
+                <!-- Card 15: Civil Engineering Basics -->
+                <div class="subject-item-container">
+                    <a href="https://otieu.com/4/9698330" class="subject-card color-accent-1">
+                        <div class="subject-icon-wrapper">
+                            <i class="fas fa-hard-hat subject-icon"></i>
+                        </div>
+                        <h3 class="subject-name">Civil Engineering Basics</h3>
+                        <p class="card-tag">Civil</p>
+                    </a>
+                </div>
+                
+                <!-- Card 16: Surveying -->
+                <div class="subject-item-container">
+                    <a href="https://otieu.com/4/9698330" class="subject-card color-accent-2">
+                        <div class="subject-icon-wrapper">
+                            <i class="fas fa-map-marked-alt subject-icon"></i>
+                        </div>
+                        <h3 class="subject-name">Surveying</h3>
+                        <p class="card-tag">Civil</p>
+                    </a>
+                </div>
+                
+                <!-- Card 17: Computer Programming (C) -->
+                <div class="subject-item-container">
+                    <a href="https://otieu.com/4/9698330" class="subject-card color-accent-3">
+                        <div class="subject-icon-wrapper">
+                            <i class="fas fa-code subject-icon"></i>
+                        </div>
+                        <h3 class="subject-name">Computer Programming (C)</h3>
+                        <p class="card-tag">CS/IT</p>
+                    </a>
+                </div>
+                
+                <!-- Card 18: Data Structures & Algorithms -->
+                <div class="subject-item-container">
+                    <a href="https://otieu.com/4/9698330" class="subject-card color-accent-4">
+                        <div class="subject-icon-wrapper">
+                            <i class="fas fa-sitemap subject-icon"></i>
+                        </div>
+                        <h3 class="subject-name">Data Structures & Algorithms</h3>
+                        <p class="card-tag">CS/IT</p>
+                    </a>
+                </div>
+                
+                <!-- Card 19: Operating Systems -->
+                <div class="subject-item-container">
+                    <a href="https://otieu.com/4/9698330" class="subject-card color-accent-5">
+                        <div class="subject-icon-wrapper">
+                            <i class="fas fa-window-maximize subject-icon"></i>
+                        </div>
+                        <h3 class="subject-name">Operating Systems</h3>
+                        <p class="card-tag">CS/IT</p>
+                    </a>
+                </div>
+                
+                <!-- Card 20: Computer Networks -->
+                <div class="subject-item-container">
+                    <a href="https://otieu.com/4/9698330" class="subject-card color-accent-6">
+                        <div class="subject-icon-wrapper">
+                            <i class="fas fa-network-wired subject-icon"></i>
+                        </div>
+                        <h3 class="subject-name">Computer Networks</h3>
+                        <p class="card-tag">CS/IT</p>
+                    </a>
+                </div>
+                
+                <!-- Card 21: Material Science -->
+                <div class="subject-item-container">
+                    <a href="https://otieu.com/4/9698330" class="subject-card color-accent-7">
+                        <div class="subject-icon-wrapper">
+                            <i class="fas fa-gem subject-icon"></i>
+                        </div>
+                        <h3 class="subject-name">Material Science</h3>
+                        <p class="card-tag">General</p>
+                    </a>
+                </div>
+                
+                <!-- Card 22: Environmental Science -->
+                <div class="subject-item-container">
+                    <a href="https://otieu.com/4/9698330" class="subject-card color-accent-1">
+                        <div class="subject-icon-wrapper">
+                            <i class="fas fa-leaf subject-icon"></i>
+                        </div>
+                        <h3 class="subject-name">Environmental Science</h3>
+                        <p class="card-tag">General</p>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Message shown when no results are found -->
+            <p id="noResults" class="no-results-message" style="display: none;">
+                <i class="fas fa-exclamation-triangle"></i> Oops! No books found matching your search. Try a different keyword.
+            </p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Tech Note_Books Hub. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // --- Theme Toggle JavaScript ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const body = document.body;
+            const themeToggle = document.getElementById('theme-toggle');
+
+            // 1. Set initial theme based on localStorage or default to dark
+            const currentTheme = localStorage.getItem('theme') || 'dark';
+            body.setAttribute('data-theme', currentTheme);
+            
+            // 2. Update icon to reflect the current theme
+            themeToggle.querySelector('i').className = currentTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+
+            // 3. Function to toggle the theme on click
+            themeToggle.addEventListener('click', () => {
+                const isDark = body.getAttribute('data-theme') === 'dark';
+                const newTheme = isDark ? 'light' : 'dark';
+                
+                // Update attribute and storage
+                body.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                
+                // Update icon
+                themeToggle.querySelector('i').className = newTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+            });
+        });
+        
+        // --- Search/Filter JavaScript ---
+        document.getElementById('searchInput').addEventListener('keyup', function() {
+            const searchTerm = this.value.toLowerCase();
+            const grid = document.getElementById('booksGrid');
+            const cards = document.querySelectorAll('.subject-item-container');
+            const noResults = document.getElementById('noResults');
+            let foundCount = 0;
+
+            cards.forEach(cardContainer => {
+                // Get text from both the main title and the descriptive tag for searching
+                const title = cardContainer.querySelector('.subject-name').textContent.toLowerCase();
+                const tag = cardContainer.querySelector('.card-tag').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || tag.includes(searchTerm)) {
+                    cardContainer.style.display = 'flex'; // Keep the flex container visible
+                    foundCount++;
+                } else {
+                    cardContainer.style.display = 'none';
+                }
+            });
+
+            // Toggle the No Results message visibility
+            if (foundCount === 0) {
+                noResults.style.display = 'block';
+                grid.style.display = 'grid'; // Keep grid structure for layout
+            } else {
+                noResults.style.display = 'none';
+                grid.style.display = 'grid';
+            }
+        });
+    </script>
+
+</body>

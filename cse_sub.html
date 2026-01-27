@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Computer Science Subjects</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* CSS Variables for easy theme management */
+    :root {
+      --primary-color: #2676c7;
+      --primary-hover-color: #1a5a96;
+      --background-color: #f7f7f9;
+      --card-background: #ffffff;
+      --text-color: #2c3e50;
+      --subtle-text-color: #7f8c8d;
+      --border-color: #e0e0e0;
+      --card-accent-color: #4a90e2;
+    }
+
+    body {
+      font-family: 'Open Sans', Arial, sans-serif;
+      background: var(--background-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 0;
+    }
+
+    .subject-container {
+      max-width: 680px;
+      margin: 40px auto;
+      padding: 40px;
+      background: var(--card-background);
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(44, 62, 80, 0.08);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 35px;
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.5em;
+      color: var(--text-color);
+    }
+
+    .notes-btn {
+      display: block;
+      width: fit-content;
+      margin: 0 auto 35px;
+      padding: 14px 30px;
+      background: linear-gradient(135deg, #ff7eb3, #ff758c);
+      color: white;
+      font-size: 1.1em;
+      font-weight: 600;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 8px 15px rgba(255, 118, 148, 0.3);
+    }
+
+    .notes-btn:hover {
+      background: linear-gradient(135deg, #ff5478, #ff4f7b);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 20px rgba(255, 118, 148, 0.4);
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 25px;
+      color: var(--subtle-text-color);
+      text-decoration: none;
+      font-size: 0.9em;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .back-link:hover {
+      color: var(--primary-color);
+    }
+
+    /* --- Search Bar Styles --- */
+    .search-container {
+      position: relative;
+      margin-bottom: 30px;
+    }
+
+    #search-box {
+      width: 100%;
+      padding: 12px 15px 12px 45px; /* Make space for icon */
+      font-size: 1em;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      box-sizing: border-box;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    #search-box:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+    }
+    
+    .search-icon {
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 18px;
+        height: 18px;
+        fill: var(--subtle-text-color);
+    }
+
+    /* --- Subject List Styles --- */
+    #subject-list {
+      padding: 0;
+      list-style: none;
+      margin: 0;
+    }
+
+    .subject-item {
+      margin-bottom: 12px;
+      background: var(--card-background);
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      border-left: 5px solid var(--card-accent-color);
+      transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+    }
+    .subject-item:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 12px rgba(44, 62, 80, 0.12);
+    }
+    
+    .subject-item a {
+      display: flex;
+      align-items: center;
+      padding: 18px 20px;
+      text-decoration: none;
+      color: var(--text-color);
+    }
+
+    .subject-code {
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-right: 15px;
+      min-width: 80px;
+    }
+    
+    .subject-name {
+      font-weight: 500;
+      flex-grow: 1;
+    }
+    
+    .subject-item a:hover .subject-name {
+      color: var(--primary-hover-color);
+    }
+
+    #no-results {
+        text-align: center;
+        padding: 20px;
+        color: var(--subtle-text-color);
+        display: none;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="subject-container">
+    <a href="index.html" class="back-link">&larr; Back to Departments</a>
+    <h1>Computer Science Subjects</h1>
+
+    <a href="https://glitchrealm.notion.site/Notes-fe27a20b85b148e0a6450e2682aecf8c" target="_blank" class="notes-btn">
+      📝 View Handwritten Notes 
+    </a>
+
+    <div class="search-container">
+      <svg class="search-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg>
+      <input type="search" id="search-box" placeholder="Search by name or code (e.g., 'Data' or 'CS201')...">
+    </div>
+
+    <ul id="subject-list">
+      <li class="subject-item">
+        <a href="cse/datastructure.html">
+          <span class="subject-code">CS201</span>
+          <span class="subject-name">Data Structures</span>
+        </a>
+      </li>
+      <li class="subject-item">
+        <a href="cse/algorithm.html">
+          <span class="subject-code">CS202</span>
+          <span class="subject-name">Algorithms</span>
+        </a>
+      </li>
+      <li class="subject-item">
+        <a href="cse/operating system.html">
+          <span class="subject-code">CS203</span>
+          <span class="subject-name">Operating Systems</span>
+        </a>
+      </li>
+      <li class="subject-item">
+        <a href="cse/computernetworks.html">
+          <span class="subject-code">CS204</span>
+          <span class="subject-name">Computer Networks</span>
+        </a>
+      </li>
+      <li class="subject-item">
+        <a href="cse/datamanagementsystem.html">
+          <span class="subject-code">CS205</span>
+          <span class="subject-name">Database Management Systems</span>
+        </a>
+      </li>
+      <li class="subject-item">
+        <a href="cse/comp_org_arch.html">
+          <span class="subject-code">CS206</span>
+          <span class="subject-name">Computer Organization & Architecture</span>
+        </a>
+      </li>
+      <li class="subject-item">
+        <a href="cse/softwareeng.html">
+          <span class="subject-code">CS207</span>
+          <span class="subject-name">Software Engineering</span>
+        </a>
+      </li>
+      <li class="subject-item">
+        <a href="cse/webtechnology.html">
+          <span class="subject-code">CS208</span>
+          <span class="subject-name">Web Technologies</span>
+        </a>
+      </li>
+      <li class="subject-item">
+        <a href="cse/computaion.html">
+          <span class="subject-code">CS209</span>
+          <span class="subject-name">Theory of Computation</span>
+        </a>
+      </li>
+      <li class="subject-item">
+        <a href="cse/artificialinteligence.html">
+          <span class="subject-code">CS210</span>
+          <span class="subject-name">Artificial Intelligence</span>
+        </a>
+      </li>
+      <li id="no-results" style="display: none;">No subjects found.</li>
+    </ul>
+  </div>
+
+  <script>
+    // --- JavaScript for Live Search Functionality ---
+    document.getElementById('search-box').addEventListener('keyup', function() {
+      let filter = this.value.toLowerCase();
+      let subjectList = document.getElementById('subject-list');
+      let items = subjectList.getElementsByClassName('subject-item');
+      let noResults = document.getElementById('no-results');
+      let visibleItemsCount = 0;
+
+      for (let i = 0; i < items.length; i++) {
+        let a = items[i].getElementsByTagName('a')[0];
+        let textValue = a.textContent || a.innerText;
+
+        if (textValue.toLowerCase().indexOf(filter) > -1) {
+          items[i].style.display = "";
+          visibleItemsCount++;
+        } else {
+          items[i].style.display = "none";
+        }
+      }
+      
+      if (visibleItemsCount === 0) {
+        noResults.style.display = "block";
+      } else {
+        noResults.style.display = "none";
+      }
+    });
+  </script>
+
+</body>
+</html>
