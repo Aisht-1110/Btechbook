@@ -4,13 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="/favicon.png">
-    <!-- ✅ CONTENT SECURITY POLICY (Malware Protection) -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://forms.app https://pagead2.googlesyndication.com https://partner.googleadservices.com https://*.googlesyndication.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' data: https://cdnjs.cloudflare.com https://fonts.gstatic.com; img-src 'self' data: https://www.googletagmanager.com https://forms.app https://*.googlesyndication.com https://*.google.com https://*.gstatic.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://forms.app https://*.forms.app https://*.googlesyndication.com; frame-src 'self' https://forms.app https://*.forms.app https://*.googlesyndication.com https://googleads.g.doubleclick.net; object-src 'none';">
-    
+
+    <!-- ✅ Google AdSense Verification Tag -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5091200385247458" crossorigin="anonymous"></script>
+    <!-- ✅ CONTENT SECURITY POLICY (Malware Protection & Ad Manager) -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://forms.app https://pagead2.googlesyndication.com https://partner.googleadservices.com https://*.googlesyndication.com https://securepubads.g.doubleclick.net https://*.doubleclick.net; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' data: https://cdnjs.cloudflare.com https://fonts.gstatic.com; img-src 'self' data: https://www.googletagmanager.com https://forms.app https://*.googlesyndication.com https://*.google.com https://*.gstatic.com https://*.doubleclick.net; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://forms.app https://*.forms.app https://*.googlesyndication.com https://securepubads.g.doubleclick.net https://*.doubleclick.net; frame-src 'self' https://forms.app https://*.forms.app https://*.googlesyndication.com https://googleads.g.doubleclick.net https://*.doubleclick.net; object-src 'none';">
 
     <!-- Font Awesome for modern, sleek icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" 
-          xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLMDJ6dK6tF7o+7M3UfF+8bW9vKz9zIqX9O20T0d+8tE1rG5S7h12N8D3Bv/1vW/B=" 
           crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Google Fonts: Poppins (Sans-serif) for body and Playfair Display (Serif) for headlines -->
@@ -677,7 +678,7 @@
             <nav>
                 <ul>
                     <li><a href="index.html">Notes</a></li>
-                    <li><a class="active" href="books.html">Books</a></li>
+                    <li><a class="active" href="book.html">Books</a></li>
                     <!-- Theme Toggle Button -->
                     <li><button id="theme-toggle" aria-label="Toggle dark/light theme"><i class="fas fa-moon"></i></button></li>
                 </ul>
@@ -697,10 +698,9 @@
             
             <!-- Book Grid (Subject Cards) -->
             <div id="booksGrid" class="animated-scroll">
-                
                 <!-- Card 1: Engineering Mathematics -->
                 <div class="subject-item-container">
-                    <a href="https://drive.google.com/drive/folders/1UzbzGJwmd3TrkYEtEi8ShuXh-cRoy9Av?usp=drive_link" class="subject-card color-accent-1">
+                    <a href="mech/math1.html" class="subject-card color-accent-1">
                         <div class="subject-icon-wrapper">
                             <i class="fas fa-calculator subject-icon"></i>
                         </div>
@@ -711,7 +711,7 @@
                 
                 <!-- Card 2: Theory of Machines -->
                 <div class="subject-item-container">
-                    <a href="https://drive.google.com/drive/folders/1im3Xg232eKhZbcW5Q82XHmadHzZBXHh0?usp=sharing" class="subject-card color-accent-2">
+                    <a href="mech/dynamicsofmachines.html" class="subject-card color-accent-2">
                         <div class="subject-icon-wrapper">
                             <i class="fas fa-atom subject-icon"></i>
                         </div>
@@ -722,7 +722,7 @@
                 
                 <!-- Card 3: Engineering Chemistry -->
                 <div class="subject-item-container">
-                    <a href="https://drive.google.com/file/d/1YQOTT6QABAxkjNMyL6OD4fZVr6iI8Xo_/view?usp=drive_link" class="subject-card color-accent-3">
+                    <a href="index.html#departments" class="subject-card color-accent-3">
                         <div class="subject-icon-wrapper">
                             <i class="fas fa-flask subject-icon"></i>
                         </div>
@@ -733,7 +733,7 @@
                 
                 <!-- Card 4: Engineering Mechanics -->
                 <div class="subject-item-container">
-                    <a href="https://drive.google.com/drive/folders/1YK6tSgdgN59ud5dme9bGHTxmJsF98Sx1?usp=drive_link" class="subject-card color-accent-4">
+                    <a href="mech/mechanics.html" class="subject-card color-accent-4">
                         <div class="subject-icon-wrapper">
                             <i class="fas fa-cogs subject-icon"></i>
                         </div>
@@ -744,7 +744,7 @@
 
                 <!-- Card 5: Thermodynamics -->
                 <div class="subject-item-container">
-                    <a href="https://drive.google.com/file/d/1ZlMhx1TJo0IrEp8anyTq_ZTLFfGniqLw/view?usp=sharing" class="subject-card color-accent-5">
+                    <a href="mech/thermodynamics.html" class="subject-card color-accent-5">
                         <div class="subject-icon-wrapper">
                             <i class="fas fa-fire subject-icon"></i>
                         </div>
@@ -755,7 +755,7 @@
 
                 <!-- Card 6: Fluid Mechanics -->
                 <div class="subject-item-container">
-                    <a href="https://drive.google.com/file/d/1val7FRtN95b8CVuSBQZWhWh6kyoPI6e9/view?usp=drive_link" class="subject-card color-accent-6">
+                    <a href="mech/fluidmechanics.html" class="subject-card color-accent-6">
                         <div class="subject-icon-wrapper">
                             <i class="fas fa-water subject-icon"></i>
                         </div>
@@ -766,7 +766,7 @@
 
                 <!-- Card 7: Strength of Materials -->
                 <div class="subject-item-container">
-                    <a href="https://drive.google.com/file/d/1PYQyZGvWifKc5g2nhrfzZ1LSRYa7Otoa/view?usp=drive_link" class="subject-card color-accent-7">
+                    <a href="mech/mechanics.html" class="subject-card color-accent-7">
                         <div class="subject-icon-wrapper">
                             <i class="fas fa-balance-scale-right subject-icon"></i>
                         </div>
@@ -777,7 +777,7 @@
 
                 <!-- Card 8: Design of Machine Element -->
                 <div class="subject-item-container">
-                    <a href="https://drive.google.com/file/d/1p73mKRwnqr8F2VkUJL5vNlb9GvV9I2fe/view?usp=drive_link" class="subject-card color-accent-1">
+                    <a href="mech/designofmachine.html" class="subject-card color-accent-1">
                         <div class="subject-icon-wrapper">
                             <i class="fas fa-drafting-compass subject-icon"></i>
                         </div>
@@ -788,7 +788,7 @@
 
                 <!-- Card 9: Heat and Mass Transfer -->
                 <div class="subject-item-container">
-                    <a href="https://drive.google.com/file/d/1xbCdOgcZhAVWEQVCYr_ZoFYVUiJ6r-zu/view?usp=drive_link" class="subject-card color-accent-2">
+                    <a href="mech/heatandmass.html" class="subject-card color-accent-2">
                         <div class="subject-icon-wrapper">
                             <i class="fas fa-industry subject-icon"></i>
                         </div>
@@ -799,7 +799,7 @@
 
                 <!-- Card 10: Production Technology -->
                 <div class="subject-item-container">
-                    <a href="comingsoon.html" class="subject-card color-accent-3">
+                    <a href="mech/manufacturingpractices.html" class="subject-card color-accent-3">
                         <div class="subject-icon-wrapper">
                             <i class="fas fa-tools subject-icon"></i>
                         </div>
@@ -810,7 +810,7 @@
                 
                 <!-- Card 11: Electrical Engineering -->
                 <div class="subject-item-container">
-                    <a href="comingsoon.html" class="subject-card color-accent-4">
+                    <a href="electrical-subjects.html" class="subject-card color-accent-4">
                         <div class="subject-icon-wrapper">
                             <i class="fas fa-bolt subject-icon"></i>
                         </div>
@@ -821,7 +821,7 @@
                 
                 <!-- Card 12: Electronics Engineering -->
                 <div class="subject-item-container">
-                    <a href="comingsoon.html" class="subject-card color-accent-5">
+                    <a href="electrical-subjects.html" class="subject-card color-accent-5">
                         <div class="subject-icon-wrapper">
                             <i class="fas fa-microchip subject-icon"></i>
                         </div>
@@ -832,7 +832,7 @@
                 
                 <!-- Card 13: Control Systems -->
                 <div class="subject-item-container">
-                    <a href="comingsoon.html" class="subject-card color-accent-6">
+                    <a href="electrical-subjects.html" class="subject-card color-accent-6">
                         <div class="subject-icon-wrapper">
                             <i class="fas fa-sliders-h subject-icon"></i>
                         </div>
@@ -843,7 +843,7 @@
                 
                 <!-- Card 14: Engineering Drawing -->
                 <div class="subject-item-container">
-                    <a href="comingsoon.html" class="subject-card color-accent-7">
+                    <a href="mech_sub.html" class="subject-card color-accent-7">
                         <div class="subject-icon-wrapper">
                             <i class="fas fa-pencil-ruler subject-icon"></i>
                         </div>
@@ -854,7 +854,7 @@
                 
                 <!-- Card 15: Civil Engineering Basics -->
                 <div class="subject-item-container">
-                    <a href="comingsoon.html" class="subject-card color-accent-1">
+                    <a href="civil-subjects.html" class="subject-card color-accent-1">
                         <div class="subject-icon-wrapper">
                             <i class="fas fa-hard-hat subject-icon"></i>
                         </div>
@@ -865,7 +865,7 @@
                 
                 <!-- Card 16: Surveying -->
                 <div class="subject-item-container">
-                    <a href="comingsoon.html" class="subject-card color-accent-2">
+                    <a href="civil-subjects.html" class="subject-card color-accent-2">
                         <div class="subject-icon-wrapper">
                             <i class="fas fa-map-marked-alt subject-icon"></i>
                         </div>
@@ -876,7 +876,7 @@
                 
                 <!-- Card 17: Computer Programming (C) -->
                 <div class="subject-item-container">
-                    <a href="comingsoon.html" class="subject-card color-accent-3">
+                    <a href="cse_sub.html" class="subject-card color-accent-3">
                         <div class="subject-icon-wrapper">
                             <i class="fas fa-code subject-icon"></i>
                         </div>
@@ -887,7 +887,7 @@
                 
                 <!-- Card 18: Data Structures & Algorithms -->
                 <div class="subject-item-container">
-                    <a href="comingsoon.html" class="subject-card color-accent-4">
+                    <a href="cse/datastructure.html" class="subject-card color-accent-4">
                         <div class="subject-icon-wrapper">
                             <i class="fas fa-sitemap subject-icon"></i>
                         </div>
@@ -898,7 +898,7 @@
                 
                 <!-- Card 19: Operating Systems -->
                 <div class="subject-item-container">
-                    <a href="comingsoon.html" class="subject-card color-accent-5">
+                    <a href="cse/operating-system.html" class="subject-card color-accent-5">
                         <div class="subject-icon-wrapper">
                             <i class="fas fa-window-maximize subject-icon"></i>
                         </div>
@@ -909,7 +909,7 @@
                 
                 <!-- Card 20: Computer Networks -->
                 <div class="subject-item-container">
-                    <a href="comingsoon.html" class="subject-card color-accent-6">
+                    <a href="cse/computernetworks.html" class="subject-card color-accent-6">
                         <div class="subject-icon-wrapper">
                             <i class="fas fa-network-wired subject-icon"></i>
                         </div>
@@ -920,7 +920,7 @@
                 
                 <!-- Card 21: Material Science -->
                 <div class="subject-item-container">
-                    <a href="comingsoon.html" class="subject-card color-accent-7">
+                    <a href="metal.html" class="subject-card color-accent-7">
                         <div class="subject-icon-wrapper">
                             <i class="fas fa-gem subject-icon"></i>
                         </div>
@@ -931,7 +931,7 @@
                 
                 <!-- Card 22: Environmental Science -->
                 <div class="subject-item-container">
-                    <a href="comingsoon.html" class="subject-card color-accent-1">
+                    <a href="civil-subjects.html" class="subject-card color-accent-1">
                         <div class="subject-icon-wrapper">
                             <i class="fas fa-leaf subject-icon"></i>
                         </div>
@@ -945,6 +945,86 @@
             <p id="noResults" class="no-results-message" style="display: none;">
                 <i class="fas fa-exclamation-triangle"></i> Oops! No books found matching your search. Try a different keyword.
             </p>
+
+            <!-- Educational Guide: Engineering Textbooks & Academic Syllabus Mapping -->
+            <div class="educational-guide-section" style="margin-top: 60px; padding: 40px; background-color: var(--surface-color); border: 1px solid var(--border-color); border-radius: 16px; box-shadow: 0 4px 20px var(--shadow-color); line-height: 1.8;">
+                <h2 style="font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--text-color); margin-bottom: 15px; text-align: left;">Recommended Engineering Reference Textbooks & Syllabus Mapping Guide</h2>
+                <p style="color: var(--text-secondary); font-size: 1.05rem; margin-bottom: 25px;">
+                    Standard textbooks form the bedrock of undergraduate engineering education. While concise lecture notes provide rapid revision before mid-terms and end-semester exams, comprehensive reference textbooks provide the rigorous mathematical derivations, thermodynamic proofs, algorithm complexity analyses, and real-world case studies necessary for deep mastery, university honors, and national competitive exams like GATE, ESE, and GRE.
+                </p>
+
+                <h3 style="font-size: 1.4rem; color: var(--primary-color); margin-top: 30px; margin-bottom: 15px;">Core Textbook Recommendations by Engineering Discipline</h3>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 30px;">
+                    <div style="padding: 20px; border: 1px solid var(--border-color); border-radius: 12px; background: rgba(255,255,255,0.02);">
+                        <h4 style="font-size: 1.15rem; color: var(--text-color); margin-top: 0; margin-bottom: 10px;">📐 First-Year Engineering Sciences</h4>
+                        <ul style="padding-left: 20px; color: var(--text-secondary); margin: 0; font-size: 0.95rem;">
+                            <li><strong>Engineering Mathematics:</strong> <em>Higher Engineering Mathematics</em> by Dr. B.S. Grewal</li>
+                            <li><strong>Engineering Mechanics:</strong> <em>Vector Mechanics for Engineers: Statics and Dynamics</em> by Ferdinand Beer & E. Russell Johnston Jr.</li>
+                            <li><strong>Engineering Physics:</strong> <em>Engineering Physics</em> by R.K. Gaur & S.L. Gupta</li>
+                            <li><strong>Engineering Chemistry:</strong> <em>Engineering Chemistry</em> by P.C. Jain & Monika Jain</li>
+                            <li><strong>Basic Electrical:</strong> <em>Basic Electrical Engineering</em> by D.C. Kulshreshtha / V.N. Mittle</li>
+                        </ul>
+                    </div>
+
+                    <div style="padding: 20px; border: 1px solid var(--border-color); border-radius: 12px; background: rgba(255,255,255,0.02);">
+                        <h4 style="font-size: 1.15rem; color: var(--text-color); margin-top: 0; margin-bottom: 10px;">⚙️ Mechanical Engineering</h4>
+                        <ul style="padding-left: 20px; color: var(--text-secondary); margin: 0; font-size: 0.95rem;">
+                            <li><strong>Thermodynamics:</strong> <em>Engineering Thermodynamics</em> by P.K. Nag / <em>Thermodynamics: An Engineering Approach</em> by Yunus A. Cengel & Michael A. Boles</li>
+                            <li><strong>Fluid Mechanics:</strong> <em>Fluid Mechanics</em> by Frank M. White / R.K. Bansal</li>
+                            <li><strong>Strength of Materials:</strong> <em>Mechanics of Materials</em> by James M. Gere & Stephen Timoshenko</li>
+                            <li><strong>Theory of Machines:</strong> <em>Theory of Machines</em> by S.S. Rattan / R.S. Khurmi & J.K. Gupta</li>
+                            <li><strong>Heat Transfer:</strong> <em>Fundamentals of Heat and Mass Transfer</em> by Frank P. Incropera & David P. DeWitt</li>
+                        </ul>
+                    </div>
+
+                    <div style="padding: 20px; border: 1px solid var(--border-color); border-radius: 12px; background: rgba(255,255,255,0.02);">
+                        <h4 style="font-size: 1.15rem; color: var(--text-color); margin-top: 0; margin-bottom: 10px;">💻 Computer Science & IT</h4>
+                        <ul style="padding-left: 20px; color: var(--text-secondary); margin: 0; font-size: 0.95rem;">
+                            <li><strong>Data Structures & Algorithms:</strong> <em>Introduction to Algorithms (CLRS)</em> by Cormen, Leiserson, Rivest & Stein</li>
+                            <li><strong>Operating Systems:</strong> <em>Operating System Concepts</em> by Silberschatz, Galvin & Gagne</li>
+                            <li><strong>Computer Networks:</strong> <em>Computer Networks</em> by Andrew S. Tanenbaum & David J. Wetherall</li>
+                            <li><strong>Database Systems:</strong> <em>Database System Concepts</em> by Abraham Silberschatz, Henry F. Korth & S. Sudarshan</li>
+                            <li><strong>Computer Architecture:</strong> <em>Computer Organization and Design</em> by David A. Patterson & John L. Hennessy</li>
+                        </ul>
+                    </div>
+
+                    <div style="padding: 20px; border: 1px solid var(--border-color); border-radius: 12px; background: rgba(255,255,255,0.02);">
+                        <h4 style="font-size: 1.15rem; color: var(--text-color); margin-top: 0; margin-bottom: 10px;">🔌 Electrical & Civil Engineering</h4>
+                        <ul style="padding-left: 20px; color: var(--text-secondary); margin: 0; font-size: 0.95rem;">
+                            <li><strong>Electric Circuits:</strong> <em>Fundamentals of Electric Circuits</em> by Charles K. Alexander & Matthew N.O. Sadiku</li>
+                            <li><strong>Electrical Machines:</strong> <em>Electric Machinery</em> by A.E. Fitzgerald, Charles Kingsley Jr. & Stephen D. Umans</li>
+                            <li><strong>Control Systems:</strong> <em>Modern Control Engineering</em> by Katsuhiko Ogata</li>
+                            <li><strong>RCC Design:</strong> <em>Reinforced Concrete Design</em> by S. Unnikrishna Pillai & Devdas Menon (IS 456 compliant)</li>
+                            <li><strong>Soil Mechanics:</strong> <em>Basic and Applied Soil Mechanics</em> by Gopal Ranjan & A.S.R. Rao</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3 style="font-size: 1.4rem; color: var(--primary-color); margin-top: 30px; margin-bottom: 15px;">Effective Textbook Study Methodology</h3>
+                <ol style="padding-left: 20px; color: var(--text-secondary); margin-bottom: 25px;">
+                    <li><strong>Read the Conceptual Overview First:</strong> Before attempting numerical exercises, thoroughly read the introductory sections and chapter summaries to grasp the governing physical principles and assumptions.</li>
+                    <li><strong>Solve Unsolved Chapter Problems:</strong> End-of-chapter problems in standard textbooks (especially Cengel, Gere & Timoshenko, and Alexander & Sadiku) frequently match the exact questions posed in university semester examinations and GATE.</li>
+                    <li><strong>Synthesize Notes with Textbook Proofs:</strong> Use classroom notes for quick formulas, but return to standard textbooks to verify step-by-step mathematical proofs, boundary conditions, and sign conventions.</li>
+                </ol>
+
+                <h3 style="font-size: 1.4rem; color: var(--primary-color); margin-top: 30px; margin-bottom: 15px;">Academic Fair Use & Digital Study Notes</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 25px;">
+                    BTechBook is committed to supporting students and academic scholars through open educational resources (OER). Our curated library links students to open academic repositories, lecture handouts, and syllabus outlines strictly for personal non-commercial educational review under Section 52(1)(a) of the Indian Copyright Act and international Fair Use doctrines. Students are encouraged to purchase official printed editions or licensed digital copies through university libraries and verified academic book publishers.
+                </p>
+
+                <h3 style="font-size: 1.4rem; color: var(--primary-color); margin-top: 30px; margin-bottom: 15px;">Frequently Asked Questions (FAQ)</h3>
+                <div style="margin-top: 15px;">
+                    <h4 style="font-size: 1.1rem; color: var(--text-color); margin-bottom: 5px;">Which book is best for First Year Engineering Mathematics?</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 15px;"><em>Higher Engineering Mathematics</em> by Dr. B.S. Grewal is widely regarded as the most comprehensive textbook for Indian university syllabi (covering Anna University, VTU, AKTU, and JNTU) due to its extensive solved examples and step-by-step calculus derivations.</p>
+
+                    <h4 style="font-size: 1.1rem; color: var(--text-color); margin-bottom: 5px;">How do I search for a specific subject book in this library?</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 15px;">Use the search input at the top of this page to filter books by subject name (e.g. "Thermodynamics", "Mechanics", "Chemistry") or branch tags (e.g. "Core", "Mechanical", "CS/IT").</p>
+
+                    <h4 style="font-size: 1.1rem; color: var(--text-color); margin-bottom: 5px;">Are these books aligned with the AICTE model curriculum?</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; margin: 0;">Yes, all referenced books and lecture modules are aligned with the AICTE (All India Council for Technical Education) model curriculum followed by premier engineering colleges across India.</p>
+                </div>
+            </div>
         </div>
     </main>
 
@@ -972,6 +1052,7 @@
                     <li><a href="electrical-subjects.html">🔌 Electrical Engineering</a></li>
                     <li><a href="metal.html">⛏️ Metallurgy</a></li>
                     <li><a href="book.html">📚 Books Library</a></li>
+                    <li><a href="donate.html" style="color:#f59e0b; font-weight:600;">?? Support / Donate</a></li>
                 </ul>
             </div>
 
@@ -1014,6 +1095,18 @@
                         <option value="metal.html">Metallurgy</option>
                     </select>
                 </div>
+            </div>
+
+            <!-- Column 4: Quick Links -->
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-list">
+                    <li><a href="aboutus.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                    <li><a href="disclaimer.html">DMCA & Disclaimer</a></li>
+                </ul>
             </div>
         </div>
         <div class="footer-bottom">

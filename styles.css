@@ -297,6 +297,158 @@ nav a.active {
     position: relative;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
+
+/* =================================
+   App Store Promotion Modal
+==================================== */
+body.app-promo-open { overflow: hidden; }
+
+.app-promo-modal,
+.app-promo-backdrop {
+    position: fixed;
+    inset: 0;
+}
+
+.app-promo-modal {
+    z-index: 1100;
+    display: grid;
+    place-items: center;
+    padding: 20px;
+}
+
+.app-promo-modal[hidden] { display: none; }
+
+.app-promo-backdrop {
+    background: rgba(15, 23, 42, 0.68);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    animation: appPromoFadeIn 0.25s ease both;
+}
+
+.app-promo-dialog {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(210px, 0.82fr) minmax(280px, 1.18fr);
+    width: min(760px, 100%);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 24px;
+    background: #fff;
+    box-shadow: 0 30px 80px rgba(2, 8, 23, 0.32);
+    animation: appPromoRise 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.app-promo-close {
+    position: absolute;
+    z-index: 2;
+    top: 16px;
+    right: 16px;
+    width: 36px;
+    height: 36px;
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.8);
+    color: #64748b;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+
+.app-promo-close:hover,
+.app-promo-close:focus-visible { background: #fff; color: #0f172a; transform: rotate(8deg); }
+
+.app-promo-close:focus-visible,
+.app-promo-store-button:focus-visible,
+.app-promo-later:focus-visible { outline: 3px solid rgba(14, 165, 233, 0.35); outline-offset: 3px; }
+
+.app-promo-visual {
+    position: relative;
+    min-height: 420px;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(145deg, #075985, #0e7490 58%, #0f766e);
+}
+
+.app-promo-visual::after {
+    content: '';
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+}
+
+.app-promo-orbit { position: absolute; border: 1px solid rgba(186, 230, 253, 0.28); border-radius: 50%; }
+.app-promo-orbit-one { width: 330px; height: 330px; transform: rotate(32deg) skewX(-18deg); }
+.app-promo-orbit-two { width: 235px; height: 380px; transform: rotate(-52deg) skewX(14deg); }
+
+.app-promo-phone {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 156px;
+    height: 275px;
+    padding: 34px 16px 20px;
+    border: 5px solid #164e63;
+    border-radius: 24px;
+    background: linear-gradient(180deg, #f8fafc, #e0f2fe);
+    color: #0f172a;
+    box-shadow: 12px 18px 0 rgba(7, 47, 56, 0.22), 0 20px 45px rgba(7, 47, 56, 0.3);
+    transform: rotate(-7deg);
+}
+
+.app-promo-phone-speaker { position: absolute; top: 12px; width: 34px; height: 4px; border-radius: 4px; background: #164e63; }
+.app-promo-app-icon { display: grid; place-items: center; width: 57px; height: 57px; margin: 20px 0 16px; border-radius: 16px; background: #0284c7; color: #fff; font-size: 24px; box-shadow: 0 8px 16px rgba(2, 132, 199, 0.28); }
+.app-promo-phone strong { font: 700 16px 'Open Sans', sans-serif; }
+.app-promo-phone span { margin-top: 4px; color: #64748b; font-size: 10px; }
+.app-promo-phone-lines { width: 100%; margin-top: 26px; }
+.app-promo-phone-lines i { display: block; height: 7px; margin-top: 8px; border-radius: 10px; background: #bae6fd; }
+.app-promo-phone-lines i:nth-child(2) { width: 76%; background: #99f6e4; }
+.app-promo-phone-lines i:nth-child(3) { width: 56%; background: #cbd5e1; }
+.app-promo-float { position: absolute; z-index: 2; display: grid; place-items: center; width: 48px; height: 48px; border: 4px solid rgba(255,255,255,0.7); border-radius: 15px; background: #f59e0b; color: #fff; box-shadow: 0 10px 20px rgba(7, 47, 56, 0.2); font-size: 18px; }
+.app-promo-float-top { top: 24%; right: 16%; transform: rotate(12deg); }
+.app-promo-float-bottom { bottom: 19%; left: 13%; background: #14b8a6; transform: rotate(-14deg); }
+
+.app-promo-content { padding: 54px 48px 42px; }
+.app-promo-eyebrow { margin: 0 0 16px; color: #0284c7; font-size: 0.75rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+.app-promo-eyebrow i { margin-right: 6px; font-size: 1rem; }
+.app-promo-content h2 { max-width: 380px; margin: 0 0 14px; color: #0f172a; font-family: 'DM Serif Text', serif; font-size: clamp(2rem, 4vw, 2.7rem); font-weight: 400; line-height: 1.08; }
+.app-promo-content > p:not(.app-promo-eyebrow) { margin: 0; color: #64748b; font-size: 0.98rem; line-height: 1.7; }
+.app-promo-benefits { display: grid; gap: 10px; margin: 24px 0 28px; padding: 0; list-style: none; color: #334155; font-size: 0.86rem; }
+.app-promo-benefits i { width: 20px; margin-right: 7px; color: #0f9f86; }
+.app-promo-store-button { display: flex; align-items: center; gap: 12px; min-height: 58px; padding: 10px 14px; border-radius: 12px; background: #0f172a; color: #fff; text-decoration: none; box-shadow: 0 10px 18px rgba(15, 23, 42, 0.16); transition: transform 0.2s, background 0.2s; }
+.app-promo-store-button:hover { background: #1e293b; transform: translateY(-2px); }
+.app-promo-store-button > i:first-child { font-size: 1.7rem; }
+.app-promo-store-button span { display: flex; flex: 1; flex-direction: column; font-size: 1.15rem; font-weight: 700; line-height: 1.1; }
+.app-promo-store-button small { margin-bottom: 3px; font-size: 0.58rem; font-weight: 600; letter-spacing: 0.08em; }
+.app-promo-external-icon { color: #94a3b8; font-size: 0.78rem; }
+.app-promo-later { display: block; width: 100%; margin-top: 15px; border: 0; background: transparent; color: #64748b; cursor: pointer; font: 600 0.88rem 'Open Sans', sans-serif; }
+.app-promo-later:hover { color: #0284c7; }
+
+@keyframes appPromoFadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes appPromoRise { from { opacity: 0; transform: translateY(24px) scale(0.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
+
+@media (max-width: 620px) {
+    .app-promo-modal { padding: 12px; }
+    .app-promo-dialog { grid-template-columns: 1fr; max-height: calc(100vh - 24px); overflow-y: auto; border-radius: 20px; }
+    .app-promo-visual { min-height: 190px; }
+    .app-promo-phone { width: 106px; height: 180px; padding: 22px 11px 14px; border-width: 4px; border-radius: 17px; transform: rotate(-5deg) scale(0.82); }
+    .app-promo-phone-speaker { top: 8px; width: 25px; height: 3px; }
+    .app-promo-app-icon { width: 40px; height: 40px; margin: 12px 0 8px; border-radius: 11px; font-size: 17px; }
+    .app-promo-phone strong { font-size: 11px; }
+    .app-promo-phone span { font-size: 8px; }
+    .app-promo-phone-lines { margin-top: 12px; }
+    .app-promo-phone-lines i { height: 5px; margin-top: 5px; }
+    .app-promo-float { width: 36px; height: 36px; border-width: 3px; font-size: 14px; }
+    .app-promo-float-top { top: 19%; right: 19%; }
+    .app-promo-float-bottom { bottom: 14%; left: 18%; }
+    .app-promo-content { padding: 30px 24px 24px; }
+    .app-promo-content h2 { font-size: 2rem; }
+    .app-promo-benefits { margin: 20px 0 24px; }
+}
 .site-footer::before {
     content: '';
     position: absolute;

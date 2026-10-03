@@ -4,6 +4,10 @@
 User-agent: *
 Allow: /
 
+# Google AdSense Crawler
+User-agent: Mediapartners-Google
+Allow: /
+
 # Block utility/viewer pages from indexing
 Disallow: /pdf_viewer.html
 Disallow: /viewer.html

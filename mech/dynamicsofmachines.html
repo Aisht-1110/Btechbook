@@ -2,231 +2,616 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- ✅ CONTENT SECURITY POLICY (Malware Protection) -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://forms.app https://pagead2.googlesyndication.com https://partner.googleadservices.com https://*.googlesyndication.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' data: https://cdnjs.cloudflare.com https://fonts.gstatic.com; img-src 'self' data: https://www.googletagmanager.com https://forms.app https://*.googlesyndication.com https://*.google.com https://*.gstatic.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://forms.app https://*.forms.app https://*.googlesyndication.com; frame-src 'self' https://forms.app https://*.forms.app https://*.googlesyndication.com https://googleads.g.doubleclick.net; object-src 'none';">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <!-- âœ… CONTENT SECURITY POLICY (Malware Protection & GAM) -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://securepubads.g.doubleclick.net https://pagead2.googlesyndication.com https://partner.googleadservices.com https://*.googlesyndication.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' data: https://cdnjs.cloudflare.com https://fonts.gstatic.com; img-src 'self' data: https://www.googletagmanager.com https://*.doubleclick.net https://*.googlesyndication.com https://*.google.com https://*.gstatic.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://securepubads.g.doubleclick.net https://*.doubleclick.net https://*.googlesyndication.com; frame-src 'self' https://securepubads.g.doubleclick.net https://*.doubleclick.net https://*.googlesyndication.com https://googleads.g.doubleclick.net; object-src 'none';">
+    <meta name="theme-color" content="#1e293b" />
+    <link rel="icon" type="image/png" href="../favicon.png">
+
+    <!-- âœ… Google AdSense Verification Tag -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5091200385247458" crossorigin="anonymous"></script>
     
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
         :root {
-          /* Palette */
-          --primary-gradient: linear-gradient(135deg, #1e293b 0%, #334155 100%); /* Slate Theme */
-          --primary-color: #334155;
-          --primary-light: #f1f5f9;
-          --secondary-color: #64748b;
+          /* Material 3 Color Palette */
+          --primary: #2563eb;
+          --primary-hover: #1d4ed8;
+          --primary-light: #dbeafe;
+          --secondary: #8b5cf6;
+          --success: #10b981;
+          --success-light: #d1fae5;
+          --warning: #f59e0b;
+          --warning-light: #fef3c7;
+          --error: #ef4444;
+          --error-light: #fee2e2;
+
+          /* Neutrals */
+          --gray-50: #f9fafb;
+          --gray-100: #f3f4f6;
+          --gray-200: #e5e7eb;
+          --gray-300: #d1d5db;
+          --gray-500: #6b7280;
+          --gray-600: #4b5563;
+          --gray-700: #374151;
+          --gray-800: #1f2937;
+          --gray-900: #111827;
+
+          /* Card & Background */
           --bg-body: #f8fafc;
           --card-bg: #ffffff;
 
-          /* Shadows */
-          --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
-          --shadow-md: 0 10px 20px -5px rgba(0,0,0,0.06);
-          --shadow-hover: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
-          --radius: 16px;
+          /* Shadows - Material Design 3 */
+          --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+          --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+          --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+          --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+          /* Border Radius */
+          --radius-sm: 8px;
+          --radius-md: 12px;
+          --radius-lg: 16px;
+          --radius-xl: 20px;
+
+          /* Transitions */
+          --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+          --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+          --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          -webkit-tap-highlight-color: transparent;
         }
 
         body {
-          background-color: var(--bg-body);
-          /* Subtle grid pattern */
-          background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
-          background-size: 24px 24px;
-          font-family: 'Poppins', sans-serif;
-          margin: 0;
-          padding: 40px 20px;
-          color: #0f172a;
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+          color: var(--gray-900);
+          padding: 0;
+          min-height: 100vh;
+          overflow-x: hidden;
+        }
+
+        /* Animated Background Pattern */
+        body::before {
+          content: "";
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-image:
+            radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+          pointer-events: none;
+          z-index: 0;
         }
 
         .container {
-          max-width: 800px;
+          max-width: 900px;
           margin: 0 auto;
+          padding: 20px;
+          position: relative;
+          z-index: 1;
         }
 
-        /* --- Header Section --- */
+        /* Enhanced Header Section */
         .course-header {
-          background: var(--primary-gradient);
-          border-radius: var(--radius);
-          padding: 40px;
-          color: white;
-          box-shadow: var(--shadow-md);
-          margin-bottom: 30px;
+          background: rgba(255, 255, 255, 0.95);
+          backdrop-filter: blur(20px) saturate(180%);
+          -webkit-backdrop-filter: blur(20px) saturate(180%);
+          border-radius: var(--radius-xl);
+          padding: 32px;
+          color: var(--gray-900);
+          box-shadow: var(--shadow-xl);
+          margin-bottom: 24px;
           position: relative;
           overflow: hidden;
+          border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
-        /* Decorative element */
-        .course-header::after {
+        /* Decorative Elements */
+        .course-header::before {
           content: "";
           position: absolute;
-          top: -60px;
-          right: -40px;
-          width: 220px;
-          height: 220px;
-          background: rgba(255,255,255,0.08);
+          top: -50%;
+          right: -20%;
+          width: 300px;
+          height: 300px;
+          background: linear-gradient(135deg, var(--primary), var(--secondary));
           border-radius: 50%;
+          opacity: 0.08;
           pointer-events: none;
         }
 
-        .header-content h2 {
-          margin: 0 0 8px 0;
-          font-size: 0.9rem;
-          text-transform: uppercase;
-          letter-spacing: 1.5px;
-          opacity: 0.8;
-          font-weight: 600;
+        .course-header::after {
+          content: "";
+          position: absolute;
+          bottom: -30%;
+          left: -10%;
+          width: 200px;
+          height: 200px;
+          background: linear-gradient(135deg, var(--secondary), var(--primary));
+          border-radius: 50%;
+          opacity: 0.06;
+          pointer-events: none;
         }
 
-        .header-content h1 {
-          margin: 0;
-          font-size: 2.2rem;
+        .header-content { position: relative; z-index: 1; }
+
+        .course-code {
+          display: inline-block;
+          background: linear-gradient(135deg, var(--primary), var(--secondary));
+          color: white;
+          padding: 6px 16px;
+          border-radius: 20px;
+          font-size: 0.75rem;
           font-weight: 700;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+          margin-bottom: 12px;
+          box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        .course-title {
+          margin: 0 0 16px 0;
+          font-size: 2rem;
+          font-weight: 800;
           letter-spacing: -0.5px;
+          background: linear-gradient(135deg, var(--gray-900), var(--gray-600));
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          line-height: 1.2;
         }
 
         .header-stats {
-          margin-top: 16px;
           display: flex;
-          gap: 20px;
-          font-size: 0.9rem;
-          opacity: 0.9;
+          gap: 24px;
+          font-size: 0.875rem;
+          color: var(--gray-600);
           font-weight: 500;
+          flex-wrap: wrap;
         }
 
         .stat-item {
           display: flex;
           align-items: center;
-          gap: 6px;
+          gap: 8px;
+          padding: 8px 0;
         }
 
-        /* --- File Cards List --- */
+        .stat-item svg {
+          width: 18px;
+          height: 18px;
+          color: var(--primary);
+        }
+
+        /* Progress Bar */
+        .progress-container {
+          margin-top: 20px;
+          padding-top: 20px;
+          border-top: 1px solid var(--gray-200);
+        }
+
+        .progress-label {
+          display: flex;
+          justify-content: space-between;
+          font-size: 0.75rem;
+          color: var(--gray-600);
+          margin-bottom: 8px;
+          font-weight: 600;
+        }
+
+        .progress-bar {
+          height: 8px;
+          background: var(--gray-200);
+          border-radius: 10px;
+          overflow: hidden;
+          position: relative;
+        }
+
+        .progress-fill {
+          height: 100%;
+          background: linear-gradient(90deg, var(--primary), var(--secondary));
+          border-radius: 10px;
+          width: 0%;
+          transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+          box-shadow: 0 0 10px rgba(37, 99, 235, 0.5);
+        }
+
+        /* File Cards Grid */
         .file-grid {
           display: flex;
           flex-direction: column;
-          gap: 16px;
+          gap: 12px;
         }
 
         .file-card {
-          background: var(--card-bg);
-          border-radius: var(--radius);
+          background: rgba(255, 255, 255, 0.95);
+          backdrop-filter: blur(20px) saturate(180%);
+          -webkit-backdrop-filter: blur(20px) saturate(180%);
+          border-radius: var(--radius-lg);
           padding: 20px;
           display: flex;
           align-items: center;
           justify-content: space-between;
-          box-shadow: var(--shadow-sm);
-          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-          border: 1px solid transparent;
+          box-shadow: var(--shadow-md);
+          transition: all var(--transition-base);
+          border: 1px solid rgba(255, 255, 255, 0.3);
           position: relative;
+          overflow: hidden;
+        }
+
+        /* Hover Effect with Glow */
+        .file-card::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+          transition: left 0.5s ease;
+        }
+
+        .file-card:active {
+          transform: scale(0.98);
         }
 
         .file-card:hover {
-          transform: translateY(-4px);
-          box-shadow: var(--shadow-hover);
-          border-color: #e2e8f0;
+          transform: translateY(-4px) scale(1.01);
+          box-shadow: var(--shadow-xl);
+          border-color: rgba(37, 99, 235, 0.3);
         }
 
-        /* Left Side: Icon + Text */
+        .file-card:hover::before {
+          left: 100%;
+        }
+
         .card-left {
           display: flex;
           align-items: center;
-          gap: 20px;
+          gap: 16px;
+          flex: 1;
+          min-width: 0;
         }
 
-        /* Custom PDF Icon */
+        /* Enhanced Icon Wrapper with Gradient */
         .icon-wrapper {
-          width: 52px;
-          height: 52px;
-          background: #fee2e2;
-          border-radius: 14px;
+          width: 56px;
+          height: 56px;
+          border-radius: var(--radius-md);
           display: flex;
           align-items: center;
           justify-content: center;
           flex-shrink: 0;
-          color: #ef4444;
+          position: relative;
+          transition: all var(--transition-base);
         }
 
-        /* Variant colors for different types */
-        .icon-wrapper.qp { background: #ffedd5; color: #f97316; } /* Orange */
-        .icon-wrapper.iq { background: #dcfce7; color: #16a34a; } /* Green */
+        .file-card:hover .icon-wrapper {
+          transform: rotate(5deg) scale(1.1);
+        }
+
+        .icon-wrapper.notes {
+          background: linear-gradient(135deg, #3b82f6, #2563eb);
+          box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        .icon-wrapper.qp {
+          background: linear-gradient(135deg, #f59e0b, #d97706);
+          box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+        }
+
+        .icon-wrapper.iq {
+          background: linear-gradient(135deg, #10b981, #059669);
+          box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
 
         .icon-wrapper svg {
           width: 28px;
           height: 28px;
-          fill: currentColor;
+          fill: white;
+          filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
         }
 
         .file-info {
           display: flex;
           flex-direction: column;
           justify-content: center;
+          min-width: 0;
+          flex: 1;
         }
 
         .file-title {
-          font-weight: 600;
-          font-size: 1.05rem;
-          color: #0f172a;
-          margin-bottom: 4px;
+          font-weight: 700;
+          font-size: 1rem;
+          color: var(--gray-900);
+          margin-bottom: 6px;
+          letter-spacing: -0.2px;
         }
 
         .file-meta {
           font-size: 0.8rem;
-          color: var(--secondary-color);
+          color: var(--gray-600);
           display: flex;
-          gap: 10px;
+          gap: 8px;
           align-items: center;
+          flex-wrap: wrap;
         }
 
+        /* Enhanced Badges */
         .badge {
-          font-size: 0.7rem;
-          padding: 3px 8px;
+          font-size: 0.65rem;
+          padding: 4px 10px;
           border-radius: 6px;
-          background: #f1f5f9;
-          font-weight: 600;
-          color: #475569;
+          font-weight: 700;
           text-transform: uppercase;
+          letter-spacing: 0.5px;
+          border: 1px solid;
         }
 
-        /* Right Side: Actions */
+        .badge.notes-badge {
+          background: var(--primary-light);
+          color: var(--primary);
+          border-color: var(--primary);
+        }
+
+        .badge.exam-badge {
+          background: var(--warning-light);
+          color: #92400e;
+          border-color: var(--warning);
+        }
+
+        .badge.study-badge {
+          background: var(--success-light);
+          color: #065f46;
+          border-color: var(--success);
+        }
+
+        .download-status {
+          background: var(--error-light);
+          color: #991b1b;
+          border-color: var(--error);
+          transition: all var(--transition-base);
+          animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.7; }
+        }
+
+        .downloaded {
+          background: var(--success-light) !important;
+          color: #065f46 !important;
+          border-color: var(--success) !important;
+          animation: none !important;
+        }
+
+        .file-size {
+          color: var(--gray-500);
+          font-weight: 600;
+        }
+
+        /* Card Actions */
         .card-actions {
           display: flex;
-          gap: 10px;
+          gap: 8px;
+          flex-shrink: 0;
         }
 
         .btn {
           text-decoration: none;
-          width: 42px;
-          height: 42px;
-          border-radius: 12px;
+          min-width: 44px;
+          height: 44px;
+          border-radius: var(--radius-md);
           display: flex;
           align-items: center;
           justify-content: center;
-          transition: all 0.2s ease;
+          transition: all var(--transition-base);
+          border: none;
+          cursor: pointer;
+          font-family: inherit;
+          font-weight: 600;
+          font-size: 0.875rem;
+          position: relative;
+          overflow: hidden;
+        }
+
+        /* Ripple Effect */
+        .btn::after {
+          content: "";
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%) scale(0);
+          background: rgba(255, 255, 255, 0.3);
+          border-radius: 50%;
+          transition: transform 0.5s ease;
+        }
+
+        .btn:active::after {
+          transform: translate(-50%, -50%) scale(2);
         }
 
         .btn-view {
-          color: var(--primary-color);
-          background: transparent;
+          color: var(--gray-700);
+          background: var(--gray-100);
         }
-        .btn-view:hover { background: #e2e8f0; }
+
+        .btn-view:hover {
+          background: var(--gray-200);
+          color: var(--gray-900);
+        }
+
+        .btn-view:active {
+          transform: scale(0.95);
+        }
 
         .btn-download {
-          background: #f1f5f9;
-          color: #334155;
-        }
-        .btn-download:hover {
-          background: #1e293b;
+          background: linear-gradient(135deg, var(--primary), var(--primary-hover));
           color: white;
-          transform: scale(1.05);
+          box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
         }
 
-        /* Mobile Responsive */
+        .btn-download:hover {
+          box-shadow: 0 6px 16px rgba(37, 99, 235, 0.4);
+          transform: translateY(-2px);
+        }
+
+        .btn-download:active {
+          transform: translateY(0) scale(0.95);
+        }
+
+        /* Open Button Style */
+        .btn-open {
+          background: linear-gradient(135deg, var(--success), #059669) !important;
+          color: white !important;
+          width: auto !important;
+          padding: 0 20px !important;
+          box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3) !important;
+          gap: 8px;
+        }
+
+        .btn-open:hover {
+          box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4) !important;
+          transform: translateY(-2px) !important;
+        }
+
+        .btn-open:active {
+          transform: translateY(0) scale(0.95) !important;
+        }
+
+        .hidden { display: none !important; }
+
+        /* Loading Spinner */
+        .spinner {
+          width: 20px;
+          height: 20px;
+          border: 3px solid rgba(255, 255, 255, 0.3);
+          border-top-color: white;
+          border-radius: 50%;
+          animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+          to { transform: rotate(360deg); }
+        }
+
+        /* Toast Notification */
+        .toast {
+          position: fixed;
+          bottom: 24px;
+          left: 50%;
+          transform: translateX(-50%) translateY(100px);
+          background: rgba(17, 24, 39, 0.95);
+          color: white;
+          padding: 16px 24px;
+          border-radius: var(--radius-md);
+          box-shadow: var(--shadow-xl);
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          z-index: 1000;
+          opacity: 0;
+          transition: all var(--transition-base);
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+          max-width: 90%;
+        }
+
+        .toast.show {
+          transform: translateX(-50%) translateY(0);
+          opacity: 1;
+        }
+
+        .toast-icon {
+          width: 24px;
+          height: 24px;
+          flex-shrink: 0;
+        }
+
+        .toast-message {
+          font-size: 0.875rem;
+          font-weight: 500;
+        }
+
+        /* Responsive Design */
         @media (max-width: 600px) {
-          body { padding: 20px 15px; }
-          .course-header { padding: 30px; }
-          .file-card { flex-direction: column; align-items: flex-start; gap: 16px; padding: 16px; }
-          .card-actions { width: 100%; justify-content: flex-end; }
-          .header-content h1 { font-size: 1.8rem; }
+          body { padding: 0; }
+
+          .container {
+            padding: 16px;
+          }
+
+          .course-header {
+            padding: 24px;
+            border-radius: var(--radius-lg);
+          }
+
+          .course-title {
+            font-size: 1.5rem;
+          }
+
+          .file-card {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 16px;
+          }
+
+          .card-actions {
+            width: 100%;
+            justify-content: flex-end;
+          }
+
+          .btn-open {
+            width: 100% !important;
+            justify-content: center;
+          }
+        }
+
+        /* Skeleton Loading Animation */
+        @keyframes shimmer {
+          0% { background-position: -1000px 0; }
+          100% { background-position: 1000px 0; }
+        }
+
+        .skeleton {
+          animation: shimmer 2s infinite;
+          background: linear-gradient(90deg, var(--gray-200) 25%, var(--gray-100) 50%, var(--gray-200) 75%);
+          background-size: 1000px 100%;
+        }
+
+        /* Accessibility - Focus States */
+        .btn:focus-visible {
+          outline: 3px solid var(--primary);
+          outline-offset: 2px;
+        }
+
+        .file-card:focus-within {
+          box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2), var(--shadow-lg);
+        }
+
+        /* Dark Mode Support (Optional) */
+        @media (prefers-color-scheme: dark) {
+          :root {
+            --bg-body: #0f172a;
+            --card-bg: #1e293b;
+            --gray-900: #f9fafb;
+            --gray-600: #9ca3af;
+          }
         }
     
 
@@ -377,22 +762,22 @@
 
 </style>
 
-    <!-- ✅ SEO TITLE -->
+    <!-- âœ… SEO TITLE -->
     <title>Dynamics of Machines - Files - Engineering Notes & PDFs | BTechBook</title>
 
-    <!-- ✅ META DESCRIPTION -->
+    <!-- âœ… META DESCRIPTION -->
     <meta name="description" content="Download free Dynamics of Machines - Files - Engineering Notes & PDFs lecture notes, PDFs, and study materials for B.Tech and Diploma students. Prepare for exams easily with BTechBook.">
 
-    <!-- ✅ CANONICAL (VERY IMPORTANT) -->
-    <link rel="canonical" href="https://btechbook.in/mech\dynamicsofmachines.html">
+    <!-- âœ… CANONICAL (VERY IMPORTANT) -->
+    <link rel="canonical" href="https://btechbook.in/mech/dynamicsofmachines.html">
 
-    <!-- ✅ OPEN GRAPH (Sharing Boost) -->
+    <!-- âœ… OPEN GRAPH (Sharing Boost) -->
     <meta property="og:title" content="Dynamics of Machines - Files - Engineering Notes & PDFs | BTechBook">
     <meta property="og:description" content="Download free Dynamics of Machines - Files - Engineering Notes & PDFs lecture notes, PDFs, and study materials for B.Tech and Diploma students. Prepare for exams easily with BTechBook.">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://btechbook.in/mech\dynamicsofmachines.html">
+    <meta property="og:url" content="https://btechbook.in/mech/dynamicsofmachines.html">
 
-    <!-- ✅ SCHEMA (Educational Material) -->
+    <!-- âœ… SCHEMA (Educational Material) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -472,184 +857,539 @@
 
     <div class="course-header">
         <div class="header-content">
-            <h2>ME8593</h2>
-            <h1>Dynamics of Machines</h1>
+            <span class="course-code">ME8594</span><h1 class="course-title">Dynamics of Machines</h1>
             <div class="header-stats">
                 <div class="stat-item">
-                    <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
-                    7 Files
+                    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                    <span id="total-files">7 Files</span>
                 </div>
-                <div class="stat-item">•</div>
-                <div class="stat-item">Updated Jan 2020</div>
+                <div class="stat-item">â€¢</div>
+                <div class="stat-item">
+                    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                    <span>Updated Jan 2026</span>
+                </div>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-label">
+                    <span>Download Progress</span>
+                    <span id="progress-text">0/7 files</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
             </div>
         </div>
     </div>
 
     <div class="file-grid">
 
-        <div class="file-card">
+        <!-- Unit 1 -->
+        <div class="file-card" id="card-DOM-U1">
             <div class="card-left">
-                <div class="icon-wrapper">
-                    <svg viewBox="0 0 24 24"><path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm10 5.5h1v-3h-1v3z"/></svg>
-                </div>
+                <div class="icon-wrapper notes"><svg viewBox="0 0 24 24"><path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm10 5.5h1v-3h-1v3z"/></svg></div>
                 <div class="file-info">
                     <div class="file-title">Unit 1</div>
                     <div class="file-meta">
-                        <span class="badge">Notes</span>
-                        <span>DOM(U1).pdf • 1.7 MB</span>
+                        <span class="badge notes-badge">Notes</span>
+                        <span class="badge download-status" id="status-DOM-U1">Not downloaded</span><span class="file-size">1.7 MB</span>
                     </div>
                 </div>
             </div>
             <div class="card-actions">
-                <a href="pdf/DOM/DOM(U1).pdf" class="btn btn-view" title="Preview" target="_blank">
+                <button class="btn btn-view" id="view-DOM-U1" onclick="viewOnline('https://raw.githubusercontent.com/Aisht-1110/Btechbook/main/mech/pdf/DOM/DOM(U1).pdf')" aria-label="View Unit 1 online">
                     <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
-                </a>
-                <a href="pdf/DOM/DOM(U1).pdf" class="btn btn-download" title="Download" download>
-                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg>
-                </a>
+                </button>
+                <button class="btn btn-download action-btn" id="btn-DOM-U1"
+                        onclick="handleAction(this)"
+                        data-pdf-url="https://raw.githubusercontent.com/Aisht-1110/Btechbook/main/mech/pdf/DOM/DOM(U1).pdf"
+                        data-pdf-name="DOM_U1.pdf"
+                        data-status-id="status-DOM-U1"
+                        data-view-id="view-DOM-U1"
+                        aria-label="Download Unit 1">
+                    <svg class="icon-dl" width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                    <span class="text-open hidden">OPEN</span>
+                </button>
             </div>
         </div>
 
-        <div class="file-card">
+        <!-- Unit 2 -->
+        <div class="file-card" id="card-DOM-U2">
             <div class="card-left">
-                <div class="icon-wrapper">
-                    <svg viewBox="0 0 24 24"><path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm10 5.5h1v-3h-1v3z"/></svg>
-                </div>
+                <div class="icon-wrapper notes"><svg viewBox="0 0 24 24"><path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm10 5.5h1v-3h-1v3z"/></svg></div>
                 <div class="file-info">
                     <div class="file-title">Unit 2</div>
                     <div class="file-meta">
-                        <span class="badge">Notes</span>
-                        <span>DOM(U2).pdf • 1.5 MB</span>
+                        <span class="badge notes-badge">Notes</span>
+                        <span class="badge download-status" id="status-DOM-U2">Not downloaded</span><span class="file-size">1.5 MB</span>
                     </div>
                 </div>
             </div>
             <div class="card-actions">
-                <a href="pdf/DOM/DOM(U2).pdf" class="btn btn-view" title="Preview" target="_blank">
+                <button class="btn btn-view" id="view-DOM-U2" onclick="viewOnline('https://raw.githubusercontent.com/Aisht-1110/Btechbook/main/mech/pdf/DOM/DOM(U2).pdf')" aria-label="View Unit 2 online">
                     <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
-                </a>
-                <a href="pdf/DOM/DOM(U2).pdf" class="btn btn-download" title="Download" download>
-                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg>
-                </a>
+                </button>
+                <button class="btn btn-download action-btn" id="btn-DOM-U2"
+                        onclick="handleAction(this)"
+                        data-pdf-url="https://raw.githubusercontent.com/Aisht-1110/Btechbook/main/mech/pdf/DOM/DOM(U2).pdf"
+                        data-pdf-name="DOM_U2.pdf"
+                        data-status-id="status-DOM-U2"
+                        data-view-id="view-DOM-U2"
+                        aria-label="Download Unit 2">
+                    <svg class="icon-dl" width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                    <span class="text-open hidden">OPEN</span>
+                </button>
             </div>
         </div>
 
-        <div class="file-card">
+        <!-- Unit 3 -->
+        <div class="file-card" id="card-DOM-U3">
             <div class="card-left">
-                <div class="icon-wrapper">
-                    <svg viewBox="0 0 24 24"><path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm10 5.5h1v-3h-1v3z"/></svg>
-                </div>
+                <div class="icon-wrapper notes"><svg viewBox="0 0 24 24"><path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm10 5.5h1v-3h-1v3z"/></svg></div>
                 <div class="file-info">
                     <div class="file-title">Unit 3</div>
                     <div class="file-meta">
-                        <span class="badge">Notes</span>
-                        <span>DOM(U3).pdf • 2.9 MB</span>
+                        <span class="badge notes-badge">Notes</span>
+                        <span class="badge download-status" id="status-DOM-U3">Not downloaded</span><span class="file-size">2.9 MB</span>
                     </div>
                 </div>
             </div>
             <div class="card-actions">
-                <a href="pdf/DOM/DOM(U3).pdf" class="btn btn-view" title="Preview" target="_blank">
+                <button class="btn btn-view" id="view-DOM-U3" onclick="viewOnline('https://raw.githubusercontent.com/Aisht-1110/Btechbook/main/mech/pdf/DOM/DOM(U3).pdf')" aria-label="View Unit 3 online">
                     <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
-                </a>
-                <a href="pdf/DOM/DOM(U3).pdf" class="btn btn-download" title="Download" download>
-                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg>
-                </a>
+                </button>
+                <button class="btn btn-download action-btn" id="btn-DOM-U3"
+                        onclick="handleAction(this)"
+                        data-pdf-url="https://raw.githubusercontent.com/Aisht-1110/Btechbook/main/mech/pdf/DOM/DOM(U3).pdf"
+                        data-pdf-name="DOM_U3.pdf"
+                        data-status-id="status-DOM-U3"
+                        data-view-id="view-DOM-U3"
+                        aria-label="Download Unit 3">
+                    <svg class="icon-dl" width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                    <span class="text-open hidden">OPEN</span>
+                </button>
             </div>
         </div>
 
-        <div class="file-card">
+        <!-- Unit 4 -->
+        <div class="file-card" id="card-DOM-U4">
             <div class="card-left">
-                <div class="icon-wrapper">
-                    <svg viewBox="0 0 24 24"><path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm10 5.5h1v-3h-1v3z"/></svg>
-                </div>
+                <div class="icon-wrapper notes"><svg viewBox="0 0 24 24"><path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm10 5.5h1v-3h-1v3z"/></svg></div>
                 <div class="file-info">
                     <div class="file-title">Unit 4</div>
                     <div class="file-meta">
-                        <span class="badge">Notes</span>
-                        <span>DOM(U4).pdf • 2.0 MB</span>
+                        <span class="badge notes-badge">Notes</span>
+                        <span class="badge download-status" id="status-DOM-U4">Not downloaded</span><span class="file-size">2.0 MB</span>
                     </div>
                 </div>
             </div>
             <div class="card-actions">
-                <a href="pdf/DOM/DOM(U4).pdf" class="btn btn-view" title="Preview" target="_blank">
+                <button class="btn btn-view" id="view-DOM-U4" onclick="viewOnline('https://raw.githubusercontent.com/Aisht-1110/Btechbook/main/mech/pdf/DOM/DOM(U4).pdf')" aria-label="View Unit 4 online">
                     <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
-                </a>
-                <a href="pdf/DOM/DOM(U4).pdf" class="btn btn-download" title="Download" download>
-                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg>
-                </a>
+                </button>
+                <button class="btn btn-download action-btn" id="btn-DOM-U4"
+                        onclick="handleAction(this)"
+                        data-pdf-url="https://raw.githubusercontent.com/Aisht-1110/Btechbook/main/mech/pdf/DOM/DOM(U4).pdf"
+                        data-pdf-name="DOM_U4.pdf"
+                        data-status-id="status-DOM-U4"
+                        data-view-id="view-DOM-U4"
+                        aria-label="Download Unit 4">
+                    <svg class="icon-dl" width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                    <span class="text-open hidden">OPEN</span>
+                </button>
             </div>
         </div>
 
-        <div class="file-card">
+        <!-- Unit 5 -->
+        <div class="file-card" id="card-DOM-U5">
             <div class="card-left">
-                <div class="icon-wrapper">
-                    <svg viewBox="0 0 24 24"><path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm10 5.5h1v-3h-1v3z"/></svg>
-                </div>
+                <div class="icon-wrapper notes"><svg viewBox="0 0 24 24"><path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm10 5.5h1v-3h-1v3z"/></svg></div>
                 <div class="file-info">
                     <div class="file-title">Unit 5</div>
                     <div class="file-meta">
-                        <span class="badge">Notes</span>
-                        <span>DOM(U5).pdf • 585 KB</span>
+                        <span class="badge notes-badge">Notes</span>
+                        <span class="badge download-status" id="status-DOM-U5">Not downloaded</span><span class="file-size">585 KB</span>
                     </div>
                 </div>
             </div>
             <div class="card-actions">
-                <a href="pdf/DOM/DOM(U5).pdf" class="btn btn-view" title="Preview" target="_blank">
+                <button class="btn btn-view" id="view-DOM-U5" onclick="viewOnline('https://raw.githubusercontent.com/Aisht-1110/Btechbook/main/mech/pdf/DOM/DOM(U5).pdf')" aria-label="View Unit 5 online">
                     <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
-                </a>
-                <a href="pdf/DOM/DOM(U5).pdf" class="btn btn-download" title="Download" download>
-                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg>
-                </a>
+                </button>
+                <button class="btn btn-download action-btn" id="btn-DOM-U5"
+                        onclick="handleAction(this)"
+                        data-pdf-url="https://raw.githubusercontent.com/Aisht-1110/Btechbook/main/mech/pdf/DOM/DOM(U5).pdf"
+                        data-pdf-name="DOM_U5.pdf"
+                        data-status-id="status-DOM-U5"
+                        data-view-id="view-DOM-U5"
+                        aria-label="Download Unit 5">
+                    <svg class="icon-dl" width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                    <span class="text-open hidden">OPEN</span>
+                </button>
             </div>
         </div>
 
-        <div class="file-card">
+        <!-- Important Questions -->
+        <div class="file-card" id="card-DOM-IQ">
             <div class="card-left">
-                <div class="icon-wrapper iq">
-                    <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
-                </div>
+                <div class="icon-wrapper iq"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg></div>
                 <div class="file-info">
                     <div class="file-title">Important Questions</div>
                     <div class="file-meta">
-                        <span class="badge" style="background: #dcfce7; color: #166534;">Study</span>
-                        <span>DOM(IQ).pdf • 404 KB</span>
+                        <span class="badge study-badge">Study</span>
+                        <span class="badge download-status" id="status-DOM-IQ">Not downloaded</span><span class="file-size">404 KB</span>
                     </div>
                 </div>
             </div>
             <div class="card-actions">
-                <a href="pdf/DOM/DOM(IQ).pdf" class="btn btn-view" title="Preview" target="_blank">
+                <button class="btn btn-view" id="view-DOM-IQ" onclick="viewOnline('https://raw.githubusercontent.com/Aisht-1110/Btechbook/main/mech/pdf/DOM/DOM(IQ).pdf')" aria-label="View Important Questions online">
                     <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
-                </a>
-                <a href="pdf/DOM/DOM(IQ).pdf" class="btn btn-download" title="Download" download>
-                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg>
-                </a>
+                </button>
+                <button class="btn btn-download action-btn" id="btn-DOM-IQ"
+                        onclick="handleAction(this)"
+                        data-pdf-url="https://raw.githubusercontent.com/Aisht-1110/Btechbook/main/mech/pdf/DOM/DOM(IQ).pdf"
+                        data-pdf-name="DOM_IQ.pdf"
+                        data-status-id="status-DOM-IQ"
+                        data-view-id="view-DOM-IQ"
+                        aria-label="Download Important Questions">
+                    <svg class="icon-dl" width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg>
+                    <span class="text-open hidden">OPEN</span>
+                </button>
             </div>
         </div>
 
-        <div class="file-card">
+        <!-- Question Paper -->
+        <div class="file-card" id="card-DOM-QP">
             <div class="card-left">
-                <div class="icon-wrapper qp">
-                    <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
-                </div>
+                <div class="icon-wrapper qp"><svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg></div>
                 <div class="file-info">
-                    <div class="file-title">Previous Year Question Paper</div>
+                    <div class="file-title">Question Paper</div>
                     <div class="file-meta">
-                        <span class="badge" style="background: #ffedd5; color: #9a3412;">Exam</span>
-                        <span>DOM(QP).pdf • 404 KB</span>
+                        <span class="badge exam-badge">Exam</span>
+                        <span class="badge download-status" id="status-DOM-QP">Not downloaded</span><span class="file-size">404 KB</span>
                     </div>
                 </div>
             </div>
             <div class="card-actions">
-                <a href="pdf/DOM/DOM(QP).pdf" class="btn btn-view" title="Preview" target="_blank">
+                <button class="btn btn-view" id="view-DOM-QP" onclick="viewOnline('https://raw.githubusercontent.com/Aisht-1110/Btechbook/main/mech/pdf/DOM/DOM(QP).pdf')" aria-label="View Question Paper online">
                     <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
-                </a>
-                <a href="pdf/DOM/DOM(QP).pdf" class="btn btn-download" title="Download" download>
-                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg>
-                </a>
+                </button>
+                <button class="btn btn-download action-btn" id="btn-DOM-QP"
+                        onclick="handleAction(this)"
+                        data-pdf-url="https://raw.githubusercontent.com/Aisht-1110/Btechbook/main/mech/pdf/DOM/DOM(QP).pdf"
+                        data-pdf-name="DOM_QP.pdf"
+                        data-status-id="status-DOM-QP"
+                        data-view-id="view-DOM-QP"
+                        aria-label="Download Question Paper">
+                    <svg class="icon-dl" width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg>
+                    <span class="text-open hidden">OPEN</span>
+                </button>
             </div>
         </div>
 
     </div>
 </div>
+
+<!-- Toast Notification -->
+<div class="toast" id="toast">
+    <svg class="toast-icon" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+    <span class="toast-message" id="toast-message"></span>
+</div>
+
+<script>
+    // Global state tracking
+    let downloadedCount = 0;
+    const totalFiles = 7;
+
+    // 1. Initialize on Page Load
+    window.onload = function() {
+        console.log("ðŸš€ Page loaded - Checking downloaded files");
+
+        const buttons = document.querySelectorAll(".action-btn");
+        buttons.forEach(btn => {
+            const name = btn.dataset.pdfName;
+            const statusId = btn.dataset.statusId;
+
+            // Call Android Bridge to check if file exists
+            if (typeof BTechBook !== "undefined" && BTechBook.checkFile) {
+                console.log("ðŸ“‚ Checking file:", name);
+                BTechBook.checkFile(name, statusId);
+            } else {
+                console.warn("âš ï¸ BTechBook bridge not available (running on PC)");
+            }
+        });
+
+        // Animate progress bar on load
+        setTimeout(() => {
+            updateProgress();
+        }, 500);
+    };
+
+    // 2. Handle Action Button - COMPLETELY REWRITTEN
+    function handleAction(btn) {
+        const url = btn.dataset.pdfUrl;
+        const name = btn.dataset.pdfName;
+        const statusId = btn.dataset.statusId;
+        const isDownloaded = btn.classList.contains('btn-open');
+
+        console.log("ðŸŽ¯ Button clicked:", name);
+        console.log("   Downloaded:", isDownloaded);
+        console.log("   URL:", url);
+
+        // Check if running on Android
+        if (typeof BTechBook === "undefined") {
+            console.warn("âš ï¸ Running on PC - Opening in new tab");
+            window.open(url, '_blank');
+            showToast('Opening file in new tab...');
+            return;
+        }
+
+        // If file is already downloaded, OPEN it
+        if (isDownloaded) {
+            console.log("âœ… Opening downloaded file:", name);
+
+            // Construct the file path where it was downloaded
+            const filePath = `/storage/emulated/0/Android/data/in.btechbook.app/files/pdfs/${name}`;
+
+            console.log("ðŸ“‚ Opening path:", filePath);
+
+            // âœ… CORRECT METHOD NAME - openPdfViewer
+            if (BTechBook.openPdfViewer) {
+                BTechBook.openPdfViewer(filePath, name);
+            } else {
+                console.error("âŒ openPdfViewer method not found");
+                showToast('Error: Cannot open PDF');
+            }
+
+        } else {
+            // File NOT downloaded yet - DOWNLOAD it
+            console.log("â¬‡ï¸ Starting download:", name);
+
+            // Show loading state
+            const icon = btn.querySelector('.icon-dl');
+            if (icon) {
+                icon.innerHTML = '<div class="spinner"></div>';
+            }
+
+            // âœ… CORRECT METHOD - downloadPdf
+            if (BTechBook.downloadPdf) {
+                BTechBook.downloadPdf(url, name, statusId);
+                showToast('Downloading ' + name + '...');
+            } else {
+                console.error("âŒ downloadPdf method not found");
+                showToast('Error: Cannot download PDF');
+
+                // Restore icon
+                setTimeout(() => {
+                    if (icon) {
+                        icon.innerHTML = '<svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>';
+                    }
+                }, 1000);
+            }
+        }
+    }
+
+    // 3. View Online (Eye Button)
+    function viewOnline(url) {
+        console.log("ðŸ‘ï¸ Opening online viewer for:", url);
+        window.open("https://docs.google.com/viewer?url=" + encodeURIComponent(url) + "&embedded=true", '_blank');
+        showToast('Opening online viewer...');
+    }
+
+    // 4. Mark File as Downloaded (Called by Android after successful download)
+    function markDownloaded(statusId) {
+        console.log("âœ… markDownloaded called for:", statusId);
+
+        // Update status badge
+        const badge = document.getElementById(statusId);
+        if (badge) {
+            badge.textContent = "Downloaded âœ“";
+            badge.classList.add("downloaded");
+            console.log("   Updated badge");
+        }
+
+        // Find and update action button
+        const btn = document.querySelector(`.action-btn[data-status-id="${statusId}"]`);
+        if (btn) {
+            console.log("   Transforming button to OPEN mode");
+
+            // Hide view button
+            const viewBtnId = btn.dataset.viewId;
+            const viewBtn = document.getElementById(viewBtnId);
+            if (viewBtn) {
+                viewBtn.style.opacity = '0';
+                setTimeout(() => viewBtn.classList.add('hidden'), 300);
+            }
+
+            // Transform to open button
+            btn.classList.remove('btn-download');
+            btn.classList.add('btn-open');
+
+            // Update button content
+            const icon = btn.querySelector('.icon-dl');
+            const text = btn.querySelector('.text-open');
+
+            if (icon) {
+                icon.style.opacity = '0';
+                setTimeout(() => {
+                    icon.classList.add('hidden');
+                    icon.innerHTML = '<svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>';
+                }, 200);
+            }
+
+            if (text) {
+                setTimeout(() => text.classList.remove('hidden'), 200);
+            }
+
+            // Update progress
+            downloadedCount++;
+            updateProgress();
+            showToast('File downloaded! You can now open it.');
+
+            console.log("âœ… Button transformation complete");
+        } else {
+            console.error("âŒ Could not find button for statusId:", statusId);
+        }
+    }
+
+    // 5. Mark File as Deleted (Called by Android after deletion)
+    function markDeleted(statusId) {
+        console.log("ðŸ—‘ï¸ markDeleted called for:", statusId);
+
+        // Update status badge
+        const badge = document.getElementById(statusId);
+        if (badge) {
+            badge.textContent = "Not downloaded";
+            badge.classList.remove("downloaded");
+        }
+
+        // Find and revert action button
+        const btn = document.querySelector(`.action-btn[data-status-id="${statusId}"]`);
+        if (btn) {
+            // Show view button again
+            const viewBtnId = btn.dataset.viewId;
+            const viewBtn = document.getElementById(viewBtnId);
+            if (viewBtn) {
+                viewBtn.classList.remove('hidden');
+                viewBtn.style.opacity = '1';
+            }
+
+            // Revert to download button
+            btn.classList.remove('btn-open');
+            btn.classList.add('btn-download');
+
+            // Update button content
+            const icon = btn.querySelector('.icon-dl');
+            const text = btn.querySelector('.text-open');
+
+            if (text) text.classList.add('hidden');
+            if (icon) {
+                icon.classList.remove('hidden');
+                icon.style.opacity = '1';
+            }
+
+            // Update progress
+            downloadedCount--;
+            updateProgress();
+            showToast('File deleted');
+        }
+    }
+
+    // 6. Update Progress Bar
+    function updateProgress() {
+        const progressFill = document.getElementById('progress-fill');
+        const progressText = document.getElementById('progress-text');
+
+        const percentage = (downloadedCount / totalFiles) * 100;
+
+        if (progressFill) {
+            progressFill.style.width = percentage + '%';
+        }
+
+        if (progressText) {
+            progressText.textContent = `${downloadedCount}/${totalFiles} files`;
+        }
+
+        console.log(`ðŸ“Š Progress: ${downloadedCount}/${totalFiles} (${percentage.toFixed(0)}%)`);
+
+        // Show completion toast
+        if (downloadedCount === totalFiles) {
+            setTimeout(() => {
+                showToast('All files downloaded! ðŸŽ‰');
+            }, 500);
+        }
+    }
+
+    // 7. Toast Notification System
+    function showToast(message, duration = 3000) {
+        const toast = document.getElementById('toast');
+        const toastMessage = document.getElementById('toast-message');
+
+        if (toast && toastMessage) {
+            toastMessage.textContent = message;
+            toast.classList.add('show');
+            console.log("ðŸ’¬ Toast:", message);
+
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, duration);
+        }
+    }
+
+    // 8. Error Handling (Called by Android on download failure)
+    function downloadFailed(statusId, errorMessage) {
+        console.error("âŒ Download failed for:", statusId, "-", errorMessage);
+
+        const btn = document.querySelector(`.action-btn[data-status-id="${statusId}"]`);
+        if (btn) {
+            const icon = btn.querySelector('.icon-dl');
+            if (icon) {
+                // Restore download icon
+                icon.innerHTML = '<svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>';
+            }
+        }
+        showToast(errorMessage || 'Download failed. Please try again.', 4000);
+    }
+
+    // 9. Accessibility - Keyboard Navigation
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            if (e.target.classList.contains('btn')) {
+                e.preventDefault();
+                e.target.click();
+            }
+        }
+    });
+
+    // 10. Performance - Lazy load progress tracking
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.file-card').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = `all 0.4s ease ${index * 0.05}s`;
+            observer.observe(card);
+        });
+    }
+
+    // 11. Debug Helper - Check Bridge Availability
+    console.log("ðŸ” Checking Android Bridge:");
+    console.log("   BTechBook available:", typeof BTechBook !== "undefined");
+    if (typeof BTechBook !== "undefined") {
+        console.log("   checkFile:", typeof BTechBook.checkFile);
+        console.log("   openPdfViewer:", typeof BTechBook.openPdfViewer);
+        console.log("   downloadPdf:", typeof BTechBook.downloadPdf);
+        console.log("   deleteFile:", typeof BTechBook.deleteFile);
+    }
+</script>
 
 
     
@@ -668,13 +1408,14 @@
             <div class="footer-col">
                 <h3>Engineering Branches</h3>
                 <ul class="footer-list">
-                    <li><a href="../index.html">🏠 Home Page</a></li>
-                    <li><a href="../mech_sub.html">⚙️ Mechanical Engineering</a></li>
-                    <li><a href="../cse_sub.html">💻 Computer Science</a></li>
-                    <li><a href="../civil-subjects.html">🏗️ Civil Engineering</a></li>
-                    <li><a href="../electrical-subjects.html">🔌 Electrical Engineering</a></li>
-                    <li><a href="../metal.html">⛏️ Metallurgy</a></li>
-                    <li><a href="../book.html">📚 Books Library</a></li>
+                    <li><a href="../index.html">ðŸ  Home Page</a></li>
+                    <li><a href="../mech_sub.html">âš™ï¸ Mechanical Engineering</a></li>
+                    <li><a href="../cse_sub.html">ðŸ’» Computer Science</a></li>
+                    <li><a href="../civil-subjects.html">ðŸ—ï¸ Civil Engineering</a></li>
+                    <li><a href="../electrical-subjects.html">ðŸ”Œ Electrical Engineering</a></li>
+                    <li><a href="../metal.html">â›ï¸ Metallurgy</a></li>
+                    <li><a href="../book.html">ðŸ“š Books Library</a></li>
+                    <li><a href="../donate.html" style="color:#f59e0b; font-weight:600;">?? Support / Donate</a></li>
                 </ul>
             </div>
 
@@ -687,7 +1428,7 @@
                     <select class="footer-select" onchange="if(this.value) window.location.href='../' + this.value;">
                         <option value="">-- Choose Subject --</option>
                         <option value="mech/thermodynamics.html">Thermodynamics</option>
-                        <option value="mech/fluidmechanics.html">Fluid Mechanics</option>
+                        <option value="mech/fluiDOMchanics.html">Fluid Mechanics</option>
                         <option value="mech/mechanics.html">Engg. Mechanics</option>
                         <option value="mech/manufacturingpractices.html">Manufacturing Tech</option>
                         <option value="mech/heatandmass.html">Heat and Mass Transfer</option>
@@ -715,8 +1456,19 @@
                         <option value="civil-subjects.html">Civil Engineering</option>
                         <option value="electrical-subjects.html">Electrical Engineering</option>
                         <option value="metal.html">Metallurgy</option>
-                    </select>
                 </div>
+            </div>
+
+            <!-- Column 4: Quick Links -->
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-list">
+                    <li><a href="../aboutus.html">About Us</a></li>
+                    <li><a href="../contact.html">Contact Us</a></li>
+                    <li><a href="../privacy.html">Privacy Policy</a></li>
+                    <li><a href="../terms.html">Terms & Conditions</a></li>
+                    <li><a href="../disclaimer.html">DMCA & Disclaimer</a></li>
+                </ul>
             </div>
         </div>
         <div class="footer-bottom">
@@ -726,6 +1478,8 @@
 
 
 
+<script src="../js/gam-rewarded.js"></script>
 <script src="../donate-modal.js"></script>
 </body>
 </html>
+

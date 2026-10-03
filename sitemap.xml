@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://btechbook.in/</loc><priority>1.0</priority><changefreq>weekly</changefreq></url>
-  <url><loc>https://btechbook.in/index.html</loc><priority>1.0</priority><changefreq>weekly</changefreq></url>
   <url><loc>https://btechbook.in/book.html</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
   <url><loc>https://btechbook.in/aboutus.html</loc><priority>0.5</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://btechbook.in/privacy.html</loc><priority>0.3</priority><changefreq>yearly</changefreq></url>
+  <url><loc>https://btechbook.in/contact.html</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://btechbook.in/privacy.html</loc><priority>0.4</priority><changefreq>yearly</changefreq></url>
+  <url><loc>https://btechbook.in/terms.html</loc><priority>0.4</priority><changefreq>yearly</changefreq></url>
+  <url><loc>https://btechbook.in/disclaimer.html</loc><priority>0.4</priority><changefreq>yearly</changefreq></url>
 
   <!-- Branch Pages -->
   <url><loc>https://btechbook.in/mech_sub.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
@@ -12,7 +14,6 @@
   <url><loc>https://btechbook.in/civil-subjects.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://btechbook.in/electrical-subjects.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://btechbook.in/metal.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://btechbook.in/mme_sub.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://btechbook.in/metrology.html</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
 
   <!-- Mechanical Subjects -->
